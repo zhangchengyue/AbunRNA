@@ -13,8 +13,6 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports: 
-    mclust (>= 5.3.0),
 RoxygenNote: 7.2.1
 Roxygen: list(markdown = TRUE)
 Suggests: 
-    RTCGA.rnaseq
