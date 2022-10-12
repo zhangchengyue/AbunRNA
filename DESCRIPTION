@@ -1,0 +1,20 @@
+Package: myRPackage
+Type: Package
+Title: What the Package Does (Title Case)
+Version: 0.1.0
+Author: person("ChengYue", "Zhang", 
+                  email = "shengyue.zhang@mail.utoronto.ca", 
+                  role = c("aut", "cre"),
+                  comment = c(ORCID = "0000-0001-9292-1920"))
+Maintainer: The package maintainer <yourself@somewhere.net>
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    mclust (>= 5.3.0),
+RoxygenNote: 7.2.1
+Roxygen: list(markdown = TRUE)
+Suggests: 
+    RTCGA.rnaseq
