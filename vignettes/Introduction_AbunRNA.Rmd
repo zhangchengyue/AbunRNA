@@ -1,0 +1,90 @@
+---
+title: "A Guide to AbunRNA"
+author: "ChengYue Zhang"
+date: "`r format(Sys.time(), '%d %b %Y')`"
+output: 
+  rmarkdown::html_vignette:
+    toc: true
+    number_sections: false
+vignette: >
+  %\VignetteIndexEntry{A Guide to AbunRNA}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+```{r setup, include=FALSE}
+library(knitr)
+opts_chunk$set(fig.align = "center", 
+               out.width = "90%",
+               fig.width = 6, fig.height = 5.5,
+               dev.args=list(pointsize=10),
+               par = TRUE, # needed for setting hook 
+               collapse = TRUE, # collapse input & ouput code in chunks
+               warning = FALSE)
+knit_hooks$set(par = function(before, options, envir)
+  { if(before && options$fig.show != "none") 
+       par(family = "sans", mar=c(4.1,4.1,1.1,1.1), mgp=c(3,1,0), tcl=-0.5)
+})
+set.seed(1) # for exact reproducibility
+```
+       
+## Introduction
+
+`AbunRNA` is an R package developed to wrap up the commonly used RNA-seq analysis pipelines from the initial quality check, sanity check, to quantification on transcript expression, then to the downstream analysis.
+
+To download **AbunRNA**, use the following commands:
+
+``` r
+require("devtools")
+install_github("zhangchengyue/AbunRNA", build_vignettes = TRUE)
+library("AbunRNA")
+```
+To list all sample functions available in the package:
+``` r
+ls("package:AbunRNA")
+```
+
+To list all sample datasets available in the package:
+``` r
+data(package = "AbunRNA")
+```
+
+<br>
+
+
+<br>
+
+## Minimal requirements
+* The **R subdirectory**
+* The **man subdirectory**
+* **DESCRIPTION** file
+* **NAMESPACE** file
+
+### Other
+* **README** file
+* **LICENSE** file
+* The **data** subdirectory
+* The **tests** subdirectory
+* The **vignettes** subdirectory
+* The **inst** subdirectory
+
+<br>
+<div style="text-align:left">
+
+## Package References
+
+[Zhang, CY. (2022) AbunRNA: R Package For
+  RNA abundance analysis. Unpublished.](https://github.com/zhangchengyue/AbunRNA)
+
+<br>
+
+## Other References
+
+
+
+
+
+----
+
+```{r}
+sessionInfo()
+```
