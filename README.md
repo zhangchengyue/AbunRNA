@@ -1,16 +1,16 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# myRPackage
+# AbunRNA
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of myRPackage is to …
+The goal of AbunRNA is to …
 
 ## Installation
 
-You can install the development version of myRPackage like so:
+You can install the development version of AbunRNA like so:
 
 ``` r
 # FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
@@ -21,7 +21,7 @@ You can install the development version of myRPackage like so:
 This is a basic example which shows you how to solve a common problem:
 
 ``` r
-library(myRPackage)
+library(AbunRNA)
 ## basic example code
 ```
 
