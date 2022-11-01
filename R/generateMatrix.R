@@ -206,3 +206,5 @@ obtainGTF <- function(species, wantedVersion=NA) {
     utils::download.file(paste0(url,"/", gtfFile), destfile = basename(gtfFile))
     return(gtfFile)
 }
+
+
