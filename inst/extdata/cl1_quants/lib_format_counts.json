@@ -1,0 +1,22 @@
+{
+    "read_files": "[ cl1.fastq.gz ]",
+    "expected_format": "SR",
+    "compatible_fragment_ratio": 1.0,
+    "num_compatible_fragments": 31971843,
+    "num_assigned_fragments": 31971843,
+    "num_frags_with_concordant_consistent_mappings": 31971826,
+    "num_frags_with_inconsistent_or_orphan_mappings": 30,
+    "strand_mapping_bias": 9.383252570635874e-7,
+    "MSF": 0,
+    "OSF": 0,
+    "ISF": 0,
+    "MSR": 0,
+    "OSR": 0,
+    "ISR": 0,
+    "SF": 30,
+    "SR": 31971826,
+    "MU": 0,
+    "OU": 0,
+    "IU": 0,
+    "U": 0
+}

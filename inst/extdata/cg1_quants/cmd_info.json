@@ -1,0 +1,9 @@
+{
+    "salmon_version": "1.4.0",
+    "index": "cdna_index",
+    "libType": "A",
+    "unmatedReads": "cg1.fastq.gz",
+    "validateMappings": [],
+    "output": "cg1_quants",
+    "auxDir": "aux_info"
+}

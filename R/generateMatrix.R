@@ -25,31 +25,11 @@
 #' in a sample.
 #'
 #'
-#' @examples
-#' # Example 1:
-#' # If there is already a reference transcriptome file to use, import the path
-#' # to the file in the refTrp parameter. In this example, C.elegans is used.
-#'
-#' # Access .sf files generated from salmon that are available in this package
-#' cw1_quants <- system.file("extdata", "cw1_quants", "quant.sf", package = "AbunRNA")
-#' cl1_quants <- system.file("extdata", "cl1_quants", "quant.sf", package = "AbunRNA")
-#' cg1_quants <- system.file("extdata", "cg1_quants", "quant.sf", package = "AbunRNA")
-#' sfSe <- c(cw1_quants, cl1_quants, cg1_quants)
-#'
-#' # Name the samples correspondingly
-#' names <- c("WT_WC_1", "lf_WC_1", "gf_WC_1")
-#' output <- generateMatrix(sfSeq = sfSe,
-#'                       refTrp="Caenorhabditis_elegans.WBcel235.107.gtf",
-#'                       names,
-#'                       abunCSV = "abunOUT")
-#' View(output) # You can take a look at the result count matrix.
-#'
-#'
-#'
-#' # Example 2:
-#' # If there isn't a reference transcriptome file ready to use, provide the
-#' # specific name of the species to directly obtain the reference transcriptome
-#' # from Ensembl database.
+#' @example
+#' # Provide the specific name of the species to directly obtain the
+#' # reference transcriptome from Ensembl database. Database would be specific
+#' # to a certian version if release version is provided (e.g. 107 in the
+#' # following example).
 #'
 #' # Access .sf files generated from salmon that are available in this package
 #' cw1_quants <- system.file("extdata", "cw1_quants", "quant.sf", package = "AbunRNA")
