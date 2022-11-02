@@ -83,8 +83,8 @@
 #' @import tibble
 #' @import GenomicFeatures
 #' @import tximport
-
-library(GenomicFeatures)
+#' @import AnnotationDbi
+#'
 generateMatrix <- function (sfSeq,
                             refTrp=NA,
                             sampleNames,
@@ -124,7 +124,7 @@ generateMatrix <- function (sfSeq,
     # Obtain txname keys
     k <- biomaRt::keys(txdb, keytypes = "TXNAME")
 
-    txGene <- select(txdb, keys = k, columns = "TXNAME", keytype = "GENEID")
+    txGene <- AnnotationDbi::select(txdb, keys = k, columns = "TXNAME", keytype = "GENEID")
 
     txGene <- txGene[, c("TXNAME", "GENEID")]
 
@@ -151,60 +151,3 @@ generateMatrix <- function (sfSeq,
 
     return(abunAnnot)
 }
-
-
-#' Obtain GTF file of a specific species from Ensmbl latest version
-#'
-#'
-#' Helper function for generateMatrix to obtain reference transcriptome from
-#' the latest version of Ensembl.
-#'
-#' @param species A string indicating the specific name of the species to get
-#'     reference transcriptome.
-#' @param wantedVersion A double indicating the version of Ensembl archive.
-#'
-#'
-#' @return Returns the name of the gtf.gz compressed file of the
-#' reference transcriptome.
-#'
-#'
-#' @example
-#' obtainGTF("Caenorhabditis Elegans", wantedVersion=107)
-#'
-#' @import utils
-#' @import rvest
-#' @import stringr
-
-obtainGTF <- function(species, wantedVersion=NA) {
-
-    # species <- "CaenorhAbditis EleGans"
-    species <- tolower(species)
-
-    species <- gsub(" ", "_", species)
-    # species
-
-    if (is.na(wantedVersion)){
-        # Obtain latest version
-        ensemblArchives <- biomaRt::listEnsemblArchives()
-        versions <- ensemblArchives$version
-        wantedVersion <- suppressWarnings(na.omit(as.numeric(versions))[1])
-    }
-
-    url <- paste0("https://ftp.ensembl.org/pub/release-",
-                  wantedVersion,
-                  "/gtf/",
-                  species)
-
-    gtfFile <- rvest::read_html(url) %>%
-        html_nodes("a") %>%
-        html_attr("href") %>%
-        stringr::str_subset(paste0("\\.",wantedVersion,".gtf.gz")) %>%
-        .[[1]]
-
-    # Download the file to current working directory
-
-    utils::download.file(paste0(url,"/", gtfFile), destfile = basename(gtfFile))
-    return(gtfFile)
-}
-
-
