@@ -83,9 +83,9 @@ quantification <- function(species = NA,
                                " -o $quantOut\n")
         rstudioapi::terminalSend(myTerm, quantCommand)
     }
-    # Remove files used for indexing
-    rstudioapi::terminalSend(myTerm, paste("rm", cdna, dna,
-                                           "gentrome.fa.gz\n", sep = " "))
+    # # Remove files used for indexing
+    # rstudioapi::terminalSend(myTerm, paste("rm", cdna, dna,
+    #                                        "gentrome.fa.gz\n", sep = " "))
 }
 
 quantification(species = "Caenorhabditis Elegans",

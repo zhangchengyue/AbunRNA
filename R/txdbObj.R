@@ -4,7 +4,7 @@
 #' which can later be used for generating count matrix of transcript abundance
 #' and the downstream expression analysis pipeline.
 #'
-#' @param quants A character vector indicating the names of salmon
+#' @param sfSeq A character vector indicating the names of salmon
 #'     output .sf files.
 #' @param refTrp A string indicating the path to the reference
 #'     transcriptome file. The default value is NA
@@ -78,7 +78,7 @@
 #' @import AnnotationDbi
 
 
-txdbObj <- function(quants,
+txdbObj <- function(sfSeq,
                     refTrp = NA,
                     species=NA,
                     release=NA,

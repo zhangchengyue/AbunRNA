@@ -132,7 +132,7 @@ generateMatrix <- function (sfSeq,
 
     }
 
-    txi <- txdbObj(sfSeq,
+    txi <- txdbObj(sfSeq = sfSeq,
                    refTrp = refTrp,
                    species = species,
                    release = release,
@@ -165,7 +165,7 @@ generateMatrix <- function (sfSeq,
     # Delete the temporary file
     unlink("tmp.csv")
 
-    # Format the matrix for downstream analysis
+    # Format the matrix
     formatted <- tibble::column_to_rownames(matrix, "Gene ID")
     return(formatted)
 }
@@ -174,17 +174,17 @@ generateMatrix <- function (sfSeq,
 
 
 # TODO: Delete these lines after finishing everything
-# # Access .sf files generated from salmon that are available in this package
-# cw1_quants <- "cw1_quants/quant.sf"
-# cl1_quants <- "cl1_quants/quant.sf"
-# cg1_quants <- "cg1_quants/quant.sf"
-# sfSe <- c(cw1_quants, cl1_quants, cg1_quants)
-#
-# # Name the samples correspondingly
-# samples <- c("WT_WC_1", "lf_WC_1", "gf_WC_1")
-# output <- generateMatrix(sfSeq = sfSe,
-#                       refTrp = "Caenorhabditis_elegans.WBcel235.107.gtf",
-#                       sampleNames = samples,
-#                       outputCSV = TRUE,
-#                       abunCSV = "abcde")
-# View(output)
+# Access .sf files generated from salmon that are available in this package
+cw1_quants <- "cw1_quants/quant.sf"
+cl1_quants <- "cl1_quants/quant.sf"
+cg1_quants <- "cg1_quants/quant.sf"
+sfSe <- c(cw1_quants, cl1_quants, cg1_quants)
+
+# Name the samples correspondingly
+samples <- c("WT_WC_1", "lf_WC_1", "gf_WC_1")
+output <- generateMatrix(sfSeq = sfSe,
+                      refTrp = "Caenorhabditis_elegans.WBcel235.108.gtf",
+                      sampleNames = samples,
+                      outputCSV = TRUE,
+                      abunCSV = "abcde")
+View(output)
