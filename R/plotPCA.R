@@ -19,7 +19,7 @@
 #' @return Returns a principle component analysis table, and a PCA plot for
 #'      x and y variables
 #'
-#' @example
+#' @examples
 #' cw1_quants <- system.file("extdata",
 #'                           "cw1_quants",
 #'                           "quant.sf",
@@ -85,3 +85,4 @@ plotPCA <- function(mat, scale = TRUE, conditions, col, x = PC1, y = PC2){
     return(pcaR)
 }
 
+# [END]

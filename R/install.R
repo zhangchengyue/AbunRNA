@@ -46,3 +46,4 @@ install <- function(){
                              "conda activate salmon\n")
 }
 
+# [END]

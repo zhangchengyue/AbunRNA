@@ -72,3 +72,5 @@ obtainDNA <- function(species, wantedVersion=NA, download = F) {
 
     return(dna)
 }
+
+# [END]

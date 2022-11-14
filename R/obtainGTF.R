@@ -74,3 +74,4 @@ obtainGTF <- function(species, wantedVersion=NA, download = F) {
     return(gtfFile)
 }
 
+# [END]
