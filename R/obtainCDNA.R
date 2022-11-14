@@ -1,23 +1,21 @@
-#' Obtain GTF file of the genome annotation for a specific species from Ensembl
+#' Obtain complete cDNA fa.gz file for a specific species from Ensembl
 #'
 #'
-#' A function that extracts reference transcriptome from Ensembl. If a release
+#' A function that extracts complete cDNA fa.gz file from Ensembl. If a release
 #' version is provided, the data will be extracted from the given version. If
 #' the release version is not provided, then the default version would be the
 #' latest version of Ensembl Archive.
 #'
-#' @param species A string indicating the specific name of the species to get
-#'     reference transcriptome.
+#' @param species A string indicating the specific name of the species.
 #' @param wantedVersion A double indicating the version of Ensembl archive.
 #' @param download A boolean indicating whether to download the file or not.
 #'
 #'
-#' @return Returns the name of the gtf.gz compressed file of the
-#' reference transcriptome.
+#' @return Returns the name of the fa.gz compressed file of cDNA.
 #'
 #'
 #' @example
-#' obtainGTF("Caenorhabditis Elegans", wantedVersion=107)
+#' obtaincDNA(species = "Caenorhabditis Elegans", wantedVersion=107)
 #'
 #'
 #' @references
@@ -39,7 +37,8 @@
 #' @import rvest
 #' @import stringr
 
-obtainGTF <- function(species, wantedVersion=NA, download = F) {
+
+obtainCDNA <- function(species, wantedVersion=NA, download = F) {
 
     # species <- "CaenorhAbditis EleGans"
     species <- tolower(species)
@@ -53,24 +52,23 @@ obtainGTF <- function(species, wantedVersion=NA, download = F) {
         versions <- ensemblArchives$version
         wantedVersion <- suppressWarnings(na.omit(as.numeric(versions))[1])
     }
-
+    wantedVersion = 105
     url <- paste0("https://ftp.ensembl.org/pub/release-",
                   wantedVersion,
-                  "/gtf/",
-                  species)
-
-    gtfFile <- rvest::read_html(url)
-    gtfFile <- rvest::html_nodes(gtfFile, "a")
-    gtfFile <- rvest::html_attr(gtfFile, "href")
-    gtfFile <- stringr::str_subset(gtfFile,
-                                   paste0("\\.", wantedVersion,".gtf.gz"))
-    gtfFile <- gtfFile[[1]]
+                  "/fasta/",
+                  species,
+                  "/cdna/")
+    url
+    cdna <- rvest::read_html(url)
+    cdna <- rvest::html_nodes(cdna, "a")
+    cdna <- rvest::html_attr(cdna, "href")
+    cdna <- stringr::str_subset(cdna, ".*\\.cdna.all.fa.gz$")
+    cdna <- cdna[[1]]
 
     # Download the file to current working directory
-    if (download = T){
-        utils::download.file(paste0(url,"/", gtfFile),
-                             destfile = basename(gtfFile))}
+    if (download == T){
+        utils::download.file(paste0(url,"/", cdna),
+                             destfile = basename(cdna))}
 
-    return(gtfFile)
+    return(cdna)
 }
-

@@ -3,10 +3,7 @@
 
 # AbunRNA
 
-An R package developed to wrap up the commonly used RNA-seq analysis
-pipelines from the initial quality check, sanity check, to
-quantification on transcript expression, then to the downstream
-analysis.
+An R package developed to focus on the commonly used transcript abuncance analysis pipelines including indexing, quantification, and to the downstream expression analysis.This R-based pipeline can access the available cDNA, DNA and transcriptome data from Ensembl.
 
 <!-- badges: start -->
 <!-- badges: end -->
