@@ -20,8 +20,7 @@
 #'
 #'
 #' @example
-#'
-#'quantification(species = "Caenorhabditis Elegans",
+#' quantification(species = "Caenorhabditis Elegans",
 #'               release = NA,
 #'               indexName = "celegansINDEX",
 #'               fastq = "celegans.fastq",
@@ -87,9 +86,3 @@ quantification <- function(species = NA,
     # rstudioapi::terminalSend(myTerm, paste("rm", cdna, dna,
     #                                        "gentrome.fa.gz\n", sep = " "))
 }
-
-quantification(species = "Caenorhabditis Elegans",
-                             release = NA,
-                             indexName = "celegansINDEX",
-                             fastq = "celegans.fastq",
-                             quantOut = "celegansQUANT")

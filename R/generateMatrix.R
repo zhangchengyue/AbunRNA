@@ -1,8 +1,12 @@
 #' Generate a count matrix from salmon output files.
+#' Plot heatmap to visualize transcript abundance among wild type and mutants
+#' if indicated.
 #'
 #' A function that process the input salmon output .sf files, extract genes from
 #' the provided gene annotation of the species, and generate a count
-#' matrix that records the expression abundance of the genes.
+#' matrix that records the expression abundance of the genes. If indicated, the
+#' function can also plot a heatmap to visualize the transcript abundance among
+#' wild type and mutant samples.
 #'
 #'
 #' @param sfSeq A character vector indicating the names of salmon
@@ -21,6 +25,9 @@
 #'     Default is the current release.
 #' @param outputCSV A boolean indicating whether to output the matrix as CSV
 #' @param abunCSV A character string indicating the basename of the output CSV
+#' @param heatmap A boolean indicating whether to plot the heat map
+#' @param head A boolean indicating whether to use only the first 6 lines of
+#'     the count matrix. Useful as an example when the matrix is large.
 #'
 #'
 #' @return Returns a data frame where each row indicates a gene, each column
@@ -105,7 +112,9 @@ generateMatrix <- function (sfSeq,
                             species=NA,
                             release=NA,
                             outputCSV = FALSE,
-                            abunCSV="abunCSV") {
+                            abunCSV="abunCSV",
+                            heatmap = T,
+                            head = T) {
 
     if (typeof(sfSeq) != "character") {
         stop("Please provide valid .sf quantification files.")
@@ -167,6 +176,24 @@ generateMatrix <- function (sfSeq,
 
     # Format the matrix
     formatted <- tibble::column_to_rownames(matrix, "Gene ID")
+
+    if (heatmap == T){
+        if (head == T){
+
+        (plot <- head(formatted))
+        pheatmap::pheatmap(mat = plot,
+                           display_numbers = T,
+                           number_color = "black",
+                           hclustfun = hclust)
+        }
+        else{
+            plot <- formatted
+        }
+        pheatmap::pheatmap(mat = plot,
+                           display_numbers = T,
+                           number_color = "black",
+                           hclustfun = hclust)
+    }
     return(formatted)
 }
 
