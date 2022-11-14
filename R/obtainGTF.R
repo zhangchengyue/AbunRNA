@@ -67,7 +67,7 @@ obtainGTF <- function(species, wantedVersion=NA, download = F) {
     gtfFile <- gtfFile[[1]]
 
     # Download the file to current working directory
-    if (download = T){
+    if (download == T){
         utils::download.file(paste0(url,"/", gtfFile),
                              destfile = basename(gtfFile))}
 

@@ -1,13 +1,15 @@
 #' Download salmon software through bioconda.
 #'
 #'
-#' A function that downloads salmon for indexing and quantification if required.
+#' A function that installs Salmon software for indexing and quantification.
 #' If conda is not previously installed, the function would install for use of
-#' salmon.
+#' Salmon.
 #'
 #'
 #' @example
-#' install
+#' install()
+#'
+#'
 #' @references
 #' Ushey K, Allaire J, Wickham H, Ritchie G (2022). rstudioapi: Safely Access
 #' the RStudio API.
