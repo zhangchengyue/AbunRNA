@@ -42,19 +42,19 @@
 #' # following example).
 #'
 #' # Access .sf files generated from salmon that are available in this package
-#' cw1_quants <- system.file("extdata",
+#' cw1Quants <- system.file("extdata",
 #'                           "cw1_quants",
 #'                           "quant.sf",
 #'                           package = "AbunRNA")
-#' cl1_quants <- system.file("extdata",
+#' cl1Quants <- system.file("extdata",
 #'                           "cl1_quants",
 #'                           "quant.sf",
 #'                           package = "AbunRNA")
-#' cg1_quants <- system.file("extdata",
+#' cg1Quants <- system.file("extdata",
 #'                           "cg1_quants",
 #'                           "quant.sf",
 #'                           package = "AbunRNA")
-#' sfSe <- c(cw1_quants, cl1_quants, cg1_quants)
+#' sfSe <- c(cw1Quants, cl1Quants, cg1Quants)
 #'
 #' # Name the samples correspondingly
 #' samples <- c("WT_WC_1", "lf_WC_1", "gf_WC_1")
@@ -200,20 +200,19 @@ generateMatrix <- function (sfSeq,
 
 
 
-# # TODO: Delete these lines after finishing everything
-# # Access .sf files generated from salmon that are available in this package
-# cw1_quants <- "cw1_quants/quant.sf"
-# cl1_quants <- "cl1_quants/quant.sf"
-# cg1_quants <- "cg1_quants/quant.sf"
-# sfSe <- c(cw1_quants, cl1_quants, cg1_quants)
-#
-# # Name the samples correspondingly
-# samples <- c("WT_WC_1", "lf_WC_1", "gf_WC_1")
-# output <- generateMatrix(sfSeq = sfSe,
-#                       refTrp = "Caenorhabditis_elegans.WBcel235.108.gtf",
-#                       sampleNames = samples,
-#                       outputCSV = TRUE,
-#                       abunCSV = "abcde")
-# View(output)
+# TODO: Delete these lines after finishing everything
+# Access .sf files generated from salmon that are available in this package
+cw1Quants <- "cw1_quants/quant.sf"
+cl1Quants <- "cl1_quants/quant.sf"
+cg1Quants <- "cg1_quants/quant.sf"
+sfSe <- c(cw1Quants, cl1Quants, cg1Quants)
+
+# Name the samples correspondingly
+samples <- c("WT_WC_1", "lf_WC_1", "gf_WC_1")
+output <- generateMatrix(sfSeq = sfSe,
+                      refTrp = "Caenorhabditis_elegans.WBcel235.108.gtf",
+                      sampleNames = samples,
+                      outputCSV = TRUE,
+                      abunCSV = "abcde")
 
 # [END]

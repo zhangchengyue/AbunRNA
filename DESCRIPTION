@@ -1,18 +1,36 @@
 Package: AbunRNA
 Type: Package
-Title: What the Package Does (Title Case)
+Title: An R package For Expression Abundance Analysis
 Version: 0.1.0
 Authors@R: person("ChengYue", "Zhang", 
-           email = "shengyue.zhang@mail.utoronto.ca", 
-           role = c("aut", "cre"))
+           email = "shengyue.zhang@mail.utoronto.ca")
 Maintainer: ChengYue Zhang <shengyue.zhang@mail.utoronto.ca>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Description: Performs analysis on transcript expression abundance. Pipeline 
+    includes downloading Miniconda, creating conda environment to download
+    Salmon software for indexing and quantification, generating count matrix
+    for input sequences, plot heatmap to visualize abundance difference among
+    wild type and mutant types, and perform principle component analysis to
+    obtain more explainatory results.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Depends: R (>= 3.5.0)
 LazyData: true
 Imports: 
+    AnnotationDbi,
+    GenomicFeatures,
+    biomaRt,
+    dplyr,
+    ggplot2,
+    rstudioapi,
+    rvest,
+    stats,
+    stringr,
+    tibble,
+    tximport,
+    utils
 RoxygenNote: 7.2.2
 Roxygen: list(markdown = TRUE)
 Suggests: 
+    testthat,
+    rmarkdown,
+    knitr

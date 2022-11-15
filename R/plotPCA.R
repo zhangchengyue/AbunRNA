@@ -16,18 +16,20 @@
 #' @param y An integer indicating the y variable
 #'
 #'
-#' @return Returns a principle component analysis table, and a PCA plot for
-#'      x and y variables
+#' @return Returns a list containing the principle component analysis results,
+#'     and a PCA plot for x and y variables.
 #'
 #' @examples
 #' cw1_quants <- system.file("extdata",
 #'                           "cw1_quants",
 #'                           "quant.sf",
 #'                           package = "AbunRNA")
+#'
 #' cl1_quants <- system.file("extdata",
 #'                           "cl1_quants",
 #'                           "quant.sf",
 #'                           package = "AbunRNA")
+#'
 #' cg1_quants <- system.file("extdata",
 #'                           "cg1_quants",
 #'                           "quant.sf",
@@ -42,15 +44,14 @@
 #'                       sampleNames = samples,
 #'                       outputCSV = TRUE,
 #'                       abunCSV = "abunOUT")
-#' conditionsDF <- read.csv(system.file("extdata", "conditions.csv")
+#' conditionsDF <- read.csv(system.file("extdata", "conditions.csv"))
 #'
 #' # Note that the col argument for plotPCA should be a column name
 #' # in conditionsDF
-#' View(conditionsDF)
-#'
-#' pca <- plotPCA(matrix, scale = TRUE,
-#'                        conditions = conditionsDF,
-#'                        col = "genoptype")
+#' graphPlot <- plotPCA(mat = output, scale = TRUE, conditions = conditions,
+#'                      col = "genotype")
+#' graphPlot$PCA
+#' graphPlot$Plot
 #'
 #' @references
 #' Wickham H (2016). ggplot2: Elegant Graphics for Data Analysis.
@@ -65,24 +66,20 @@
 #' @import ggplot2
 #' @import stats
 
-plotPCA <- function(mat, scale = TRUE, conditions, col, x = PC1, y = PC2){
-    # Principle component of abuncance data
+plotPCA <- function(mat, scale = TRUE, conditions, col, x = 1, y = 2){
+
     pca <- stats::prcomp(mat, scale = scale)
 
     pcaR<-data.frame(pca$rotation)
 
-    for (i in seq(length(colnames(pcaR)))){
-        assign(paste0("PC", i), pcaR[, i])
-    }
-
     Groups <- conditions[, colnames(conditions) == col]
-    PCx <- x
-    PCy <- y
+    PCx <- pcaR[, x]
+    PCy <- pcaR[, y]
 
-    ggplot2::ggplot(pcaR,
-                    ggplot2::aes(x=PCx, y=PCy, fill = Groups)) +
+    plot <- ggplot2::ggplot(pcaR,
+                            ggplot2::aes(x=PCx, y=PCy, fill = Groups)) +
         ggplot2::geom_point(shape = 21, col = "black")
-    return(pcaR)
+    return(list("PCA" = pcaR, "Plot" = plot))
 }
 
 # [END]
