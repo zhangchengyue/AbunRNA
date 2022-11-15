@@ -32,7 +32,7 @@ quantOut directory.
 \description{
 A function that computes indexing and quantification using default settings
 of Salmon. Make sure Salmon has been installed. If not, run
-"install()" function before calling "quantification()".
+\code{install()} function before calling \code{quantification()}.
 }
 \examples{
 quantification(species = "Caenorhabditis Elegans",

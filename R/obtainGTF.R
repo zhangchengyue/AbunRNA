@@ -17,7 +17,9 @@
 #'
 #'
 #' @example
+#' \dontrun{
 #' obtainGTF("Caenorhabditis Elegans", wantedVersion=107)
+#' }
 #'
 #'
 #' @references

@@ -21,7 +21,7 @@
 #' @export
 #' @import rstudioapi
 
-install <- function(){
+installSalmon <- function(){
     myTerm <- rstudioapi::terminalCreate()
 
     # Download conda if conda not exists

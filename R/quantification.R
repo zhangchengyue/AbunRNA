@@ -3,7 +3,7 @@
 #'
 #' A function that computes indexing and quantification using default settings
 #' of Salmon. Make sure Salmon has been installed. If not, run
-#' "install()" function before calling "quantification()".
+#' `install()` function before calling `quantification()`.
 #'
 #'
 #'@param species A string indicating the specific name of the species to get
@@ -86,5 +86,6 @@ quantification <- function(species = NA,
     # rstudioapi::terminalSend(myTerm, paste("rm", cdna, dna,
     #                                        "gentrome.fa.gz\n", sep = " "))
 }
+
 
 # [END]

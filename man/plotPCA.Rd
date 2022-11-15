@@ -4,7 +4,7 @@
 \alias{plotPCA}
 \title{Principle component analysis on input matrix}
 \usage{
-plotPCA(mat, scale = TRUE, conditions, col, x = PC1, y = PC2)
+plotPCA(mat, scale = TRUE, conditions, col, x = 1, y = 2)
 }
 \arguments{
 \item{mat}{A count matrix}
@@ -23,8 +23,8 @@ from principle component table)}
 \item{y}{An integer indicating the y variable}
 }
 \value{
-Returns a principle component analysis table, and a PCA plot for
-x and y variables
+Returns a list containing the principle component analysis results,
+and a PCA plot for x and y variables.
 }
 \description{
 A function that performs principle component analysis on input matrix, and
@@ -32,37 +32,10 @@ plot the graph indicaiting the results, grouped in category given by
 the user.
 }
 \examples{
-cw1_quants <- system.file("extdata",
-                          "cw1_quants",
-                          "quant.sf",
-                          package = "AbunRNA")
-cl1_quants <- system.file("extdata",
-                          "cl1_quants",
-                          "quant.sf",
-                          package = "AbunRNA")
-cg1_quants <- system.file("extdata",
-                          "cg1_quants",
-                          "quant.sf",
-                          package = "AbunRNA")
-sfSe <- c(cw1_quants, cl1_quants, cg1_quants)
-
-# Name the samples correspondingly
-samples <- c("WT_WC_1", "lf_WC_1", "gf_WC_1")
-matrix <- generateMatrix(sfSeq = sfSe,
-                      species = "Caenorhabditis elegans",
-                      release = 107,
-                      sampleNames = samples,
-                      outputCSV = TRUE,
-                      abunCSV = "abunOUT")
-conditionsDF <- read.csv(system.file("extdata", "conditions.csv")
-
-# Note that the col argument for plotPCA should be a column name
-# in conditionsDF
-View(conditionsDF)
-
-pca <- plotPCA(matrix, scale = TRUE,
-                       conditions = conditionsDF,
-                       col = "genoptype")
+graphPlot <- plotPCA(mat = countMatrix, scale = TRUE, conditions = conditionsDF,
+                     col = "genotype")
+graphPlot$PCA
+graphPlot$Plot
 
 }
 \references{

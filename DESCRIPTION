@@ -3,7 +3,8 @@ Type: Package
 Title: An R package For Expression Abundance Analysis
 Version: 0.1.0
 Authors@R: person("ChengYue", "Zhang", 
-           email = "shengyue.zhang@mail.utoronto.ca")
+                  email = "shengyue.zhang@mail.utoronto.ca", 
+                  role = "student")
 Maintainer: ChengYue Zhang <shengyue.zhang@mail.utoronto.ca>
 Description: Performs analysis on transcript expression abundance. Pipeline 
     includes downloading Miniconda, creating conda environment to download

@@ -67,6 +67,7 @@
 #'
 #'
 #'
+#'
 #' @references
 #' Ensembl 2022, Nucleic Acids Research, Volume 50, Issue D1,
 #' 7 January 2022, Pages D988–D995,
@@ -200,19 +201,19 @@ generateMatrix <- function (sfSeq,
 
 
 
-# TODO: Delete these lines after finishing everything
-# Access .sf files generated from salmon that are available in this package
-cw1Quants <- "cw1_quants/quant.sf"
-cl1Quants <- "cl1_quants/quant.sf"
-cg1Quants <- "cg1_quants/quant.sf"
-sfSe <- c(cw1Quants, cl1Quants, cg1Quants)
-
-# Name the samples correspondingly
-samples <- c("WT_WC_1", "lf_WC_1", "gf_WC_1")
-output <- generateMatrix(sfSeq = sfSe,
-                      refTrp = "Caenorhabditis_elegans.WBcel235.108.gtf",
-                      sampleNames = samples,
-                      outputCSV = TRUE,
-                      abunCSV = "abcde")
+# # TODO: Delete these lines after finishing everything
+# # Access .sf files generated from salmon that are available in this package
+# cw1Quants <- "cw1_quants/quant.sf"
+# cl1Quants <- "cl1_quants/quant.sf"
+# cg1Quants <- "cg1_quants/quant.sf"
+# sfSe <- c(cw1Quants, cl1Quants, cg1Quants)
+#
+# # Name the samples correspondingly
+# samples <- c("WT_WC_1", "lf_WC_1", "gf_WC_1")
+# output <- generateMatrix(sfSeq = sfSe,
+#                       refTrp = "Caenorhabditis_elegans.WBcel235.108.gtf",
+#                       sampleNames = samples,
+#                       outputCSV = TRUE,
+#                       abunCSV = "abcde")
 
 # [END]
