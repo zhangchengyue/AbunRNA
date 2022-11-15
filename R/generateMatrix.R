@@ -1,6 +1,4 @@
-#' Generate a count matrix from salmon output files.
-#' Plot heatmap to visualize transcript abundance among wild type and mutants
-#' if indicated.
+#' Generate a count matrix and Plot heatmap
 #'
 #' A function that process the input salmon output .sf files, extract genes from
 #' the provided gene annotation of the species, and generate a count
