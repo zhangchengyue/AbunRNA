@@ -1,22 +1,17 @@
 #' Download salmon software through bioconda.
 #'
-#'
 #' A function that installs Salmon software for indexing and quantification.
 #' If conda is not previously installed, the function would install for use of
 #' Salmon.
 #'
-#'
 #' @example
 #' install()
-#'
 #'
 #' @references
 #' Ushey K, Allaire J, Wickham H, Ritchie G (2022). rstudioapi: Safely Access
 #' the RStudio API.
-#' \href{https://rstudio.github.io/rstudioapi/}
-#' \href{https://github.com/rstudio/rstudioapi}
-#'
-#'
+#' \href{https://rstudio.github.io/rstudioapi/}{Link}
+#' \href{https://github.com/rstudio/rstudioapi}{Link}
 #'
 #' @export
 #' @import rstudioapi
@@ -52,6 +47,7 @@ installSalmon <- function() {
     # Activate salmon conda environment
     rstudioapi::terminalSend(myTerm,
                              "conda activate salmon\n")
+    return(invisible(NULL))
 }
 
 # [END]

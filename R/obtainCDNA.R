@@ -15,7 +15,7 @@
 #'
 #'
 #' @example
-#' obtaincDNA(species = "Caenorhabditis Elegans", wantedVersion=107)
+#' obtaincDNA(species = "Caenorhabditis Elegans", wantedVersion = 107)
 #'
 #'
 #' @references
@@ -36,7 +36,13 @@
 #' @import stringr
 
 
-obtainCDNA <- function(species, wantedVersion=NA, download = F) {
+obtainCDNA <- function(species = NA, wantedVersion = NA, download = F) {
+
+    if (is.na(species)) {
+        stop("Species name not provided.")
+    } else {
+        ;
+    }
 
     # Format input species name
     species <- tolower(species)
@@ -58,7 +64,13 @@ obtainCDNA <- function(species, wantedVersion=NA, download = F) {
                   "/fasta/",
                   species,
                   "/cdna/")
-    cdna <- rvest::read_html(url)
+    code <- tryCatch({cdna <- rvest::read_html(url)},
+             error = function(e) {return(1)})
+    if (typeof(code) == "double") {
+        stop("Species name cannot be recognized. Please try again.")
+    } else {
+        ;
+    }
     cdna <- rvest::html_nodes(cdna, "a")
     cdna <- rvest::html_attr(cdna, "href")
     cdna <- stringr::str_subset(cdna, ".*\\.cdna.all.fa.gz$")

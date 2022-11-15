@@ -1,6 +1,5 @@
 #' Obtain DNA toplevel fa.gz file for a specific species from Ensembl
 #'
-#'
 #' A function that extracts DNA toplevel fa.gz file from Ensembl. If a release
 #' version is provided, the data will be extracted from the given version. If
 #' the release version is not provided, then the default version would be the
@@ -10,13 +9,10 @@
 #' @param wantedVersion A double indicating the version of Ensembl archive.
 #' @param download A boolean indicating whether to download the file or not.
 #'
-#'
 #' @return Returns the name of the fa.gz compressed file of DNA.
-#'
 #'
 #' @example
 #' obtainDNA("Caenorhabditis Elegans", wantedVersion=107)
-#'
 #'
 #' @references
 #' Ensembl 2022, Nucleic Acids Research, Volume 50, Issue D1,
@@ -38,8 +34,12 @@
 #' @import stringr
 
 
-obtainDNA <- function(species, wantedVersion=NA, download = F) {
-
+obtainDNA <- function(species = NA, wantedVersion=NA, download = F) {
+    if (is.na(species)) {
+        stop("Species name not provided.")
+    } else {
+        ;
+    }
     # Format the input name of species
     species <- tolower(species)
 
@@ -61,7 +61,13 @@ obtainDNA <- function(species, wantedVersion=NA, download = F) {
                   species,
                   "/dna/")
 
-    dna <- rvest::read_html(url)
+    code <- tryCatch({dna <- rvest::read_html(url)},
+                     error = function(e) {return(1)})
+    if (typeof(code) == "double") {
+        stop("Species name cannot be recognized. Please try again.")
+    } else {
+        ;
+    }
     dna <- rvest::html_nodes(dna, "a")
     dna <- rvest::html_attr(dna, "href")
     dna <- stringr::str_subset(dna, ".*\\.dna.toplevel.fa.gz$")

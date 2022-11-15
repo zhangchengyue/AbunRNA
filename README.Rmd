@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
 
 ## Description
 
-`AbunRNA` is an R package focuses on the commonly used RNAseq analysis pipelines including indexing, quantification, and to the downstream expression analysis.This R-based pipeline can access the available cDNA, DNA and transcriptome data from Ensembl, generate a count matrix indicating the expression abundance of each genes within each sample, plot a heatmap to visualize the abundance among wild type and mutants, and finally perform principle component analysis on the count matrix for more exploratory information. The `AbunRNA` package was developed using `R version 4.2.1 (2022-06-23)`, `Platform: x86_64-apple-darwin17.0 (64-bit)` and `Running under: macOS Ventura 13.0`.
+`AbunRNA` is an R package focuses on the commonly used RNAseq analysis pipelines including indexing, quantification, and to the downstream expression analysis. This packages is friendly to users with lack or no experience in command line usage, but can still access the high-efficiency sequence mapping software i.e. Salmon. The R-based pipeline can access the available cDNA, DNA and transcriptome data from Ensembl, generate a count matrix indicating the expression abundance of each genes within each sample, plot a heatmap to visualize the abundance among wild type and mutants, and finally perform principle component analysis on the count matrix for more exploratory information. The `AbunRNA` package was developed using `R version 4.2.1 (2022-06-23)`, `Platform: x86_64-apple-darwin17.0 (64-bit)` and `Running under: macOS Ventura 13.0`.
 
 ## Installation
 
@@ -84,7 +84,7 @@ R Core Team (2013). R: A language and environment for statistical computing. R F
 
 ## Acknowledgements
 
-This package was developed as part of an assessment for 2022 BCB410H: Applied Bioinformatics, University of Toronto, Toronto, CANADA.
+This package was developed as part of an assessment for 2022 BCB410H: Applied Bioinformatics course at the University of Toronto, Toronto, CANADA. `AbunRNA` welcomes issues, enhancement requests, and other contributions. To submit an issue, use the GitHub issues.
 
 
 

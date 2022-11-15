@@ -2,6 +2,8 @@
 
 export(generateMatrix)
 export(installSalmon)
+export(obtainCDNA)
+export(obtainDNA)
 export(plotPCA)
 export(quantification)
 export(txdbObj)

@@ -46,10 +46,9 @@ quantification(species = "Caenorhabditis Elegans",
 \references{
 Patro, R., Duggal, G., Love, M. et al. Salmon provides fast and bias-aware
 quantification of transcript expression. Nat Methods 14, 417–419 (2017).
-\href{https://doi.org/10.1038/nmeth.4197}
+\href{https://doi.org/10.1038/nmeth.4197}{Link}
 
 Ushey K, Allaire J, Wickham H, Ritchie G (2022). rstudioapi: Safely Access
 the RStudio API.
-\href{https://rstudio.github.io/rstudioapi/}
-\href{https://github.com/rstudio/rstudioapi}
+\href{https://CRAN.R-project.org/package=rstudioapi}{Link}
 }

@@ -14,9 +14,7 @@
 #'     Default is the current release.
 #' @param key A stirng indicating the keytype to be used.
 #'
-#'
 #' @return Returns a txdb object
-#'
 #'
 #' @examples
 #' # Example 1:
@@ -31,7 +29,6 @@
 #'                 species = "Caenorhabditis elegans",
 #'                 release = 107
 #'                 key = "TXNAME")
-#'
 #'
 #' @references
 #' Ensembl 2022, Nucleic Acids Research, Volume 50, Issue D1,
@@ -65,8 +62,6 @@
 #' Computational Biology, 9. doi: 10.1371/journal.pcbi.1003118,
 #' \href{http://www.ploscompbiol.org/article/info%3Adoi%2F10.1371%2Fjournal.pcbi.1003118}{Link}.
 #'
-#'
-#'
 #' @export
 #' @import utils
 #' @import rvest
@@ -78,10 +73,10 @@
 #' @import AnnotationDbi
 
 
-txdbObj <- function(sfSeq,
+txdbObj <- function(sfSeq = NA,
                     refTrp = NA,
-                    species=NA,
-                    release=NA,
+                    species = NA,
+                    release = NA,
                     key = "TXNAME") {
 
     if (typeof(sfSeq) != "character") {
@@ -116,6 +111,13 @@ txdbObj <- function(sfSeq,
     txdb <- GenomicFeatures::makeTxDbFromGFF(refTrp)
 
     # Obtain txname keys
+    allKeys <- biomaRt::keytypes(txdb)
+    if (! (key %in% allKeys)) {
+        stop(paste("Key doesn't exist. Available keytypes: ",
+                   allKeys, sep = ",", collapse = ", "))
+    } else {
+        ;
+    }
     k <- biomaRt::keys(txdb, keytypes = key)
 
     txGene <- AnnotationDbi::select(txdb, keys = k,

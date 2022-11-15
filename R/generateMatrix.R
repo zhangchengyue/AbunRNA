@@ -103,20 +103,22 @@
 #' @import tximport
 #' @import AnnotationDbi
 #'
-generateMatrix <- function(sfSeq,
-                           refTrp=NA,
-                           sampleNames,
-                           type="salmon",
+generateMatrix <- function(sfSeq = NA,
+                           refTrp = NA,
+                           sampleNames = NA,
+                           type = "salmon",
                            keytype = "TXNAME",
-                           species=NA,
-                           release=NA,
+                           species = NA,
+                           release = NA,
                            outputCSV = FALSE,
-                           abunCSV="abunCSV",
+                           abunCSV = "abunCSV",
                            heatmap = T,
                            head = T) {
 
     if (typeof(sfSeq) != "character") {
         stop("Please provide valid .sf quantification files.")
+    } else {
+        ;
     }
 
 
@@ -130,7 +132,12 @@ generateMatrix <- function(sfSeq,
             stop("No valid reference transcriptome file or species provided.")
         }
 
-        refTrp <- obtainGTF(species = species, release = release, download = T)
+        if (is.na(release)) {
+            refTrp <- obtainGTF(species = species, download = T)
+        } else {
+            refTrp <- obtainGTF(species = species, release = release,
+                                download = T)
+        }
 
         # Unzip the gtf file
         system(paste("gunzip", refTrp))
@@ -172,6 +179,8 @@ generateMatrix <- function(sfSeq,
 
     # Delete the temporary file
     unlink("tmp.csv")
+    unlink(refTrp)
+    unlink(paste0(refTrp, ".gz"))
 
     # Format the matrix
     formatted <- tibble::column_to_rownames(matrix, "Gene ID")
@@ -195,23 +204,5 @@ generateMatrix <- function(sfSeq,
     }
     return(formatted)
 }
-
-
-
-
-# # TODO: Delete these lines after finishing everything
-# # Access .sf files generated from salmon that are available in this package
-# cw1Quants <- "cw1_quants/quant.sf"
-# cl1Quants <- "cl1_quants/quant.sf"
-# cg1Quants <- "cg1_quants/quant.sf"
-# sfSe <- c(cw1Quants, cl1Quants, cg1Quants)
-#
-# # Name the samples correspondingly
-# samples <- c("WT_WC_1", "lf_WC_1", "gf_WC_1")
-# output <- generateMatrix(sfSeq = sfSe,
-#                       refTrp = "Caenorhabditis_elegans.WBcel235.108.gtf",
-#                       sampleNames = samples,
-#                       outputCSV = TRUE,
-#                       abunCSV = "abcde")
 
 # [END]

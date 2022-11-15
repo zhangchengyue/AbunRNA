@@ -4,7 +4,7 @@
 \alias{obtainGTF}
 \title{Obtain GTF file of the genome annotation for a specific species from Ensembl}
 \usage{
-obtainGTF(species, wantedVersion = NA, download = F)
+obtainGTF(species = NA, wantedVersion = NA, download = F)
 }
 \arguments{
 \item{species}{A string indicating the specific name of the species to get

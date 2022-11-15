@@ -1,6 +1,5 @@
 #' Obtain GTF file of the genome annotation for a specific species from Ensembl
 #'
-#'
 #' A function that extracts reference transcriptome from Ensembl. If a release
 #' version is provided, the data will be extracted from the given version. If
 #' the release version is not provided, then the default version would be the
@@ -11,16 +10,13 @@
 #' @param wantedVersion A double indicating the version of Ensembl archive.
 #' @param download A boolean indicating whether to download the file or not.
 #'
-#'
 #' @return Returns the name of the gtf.gz compressed file of the
 #' reference transcriptome.
-#'
 #'
 #' @example
 #' \dontrun{
 #' obtainGTF("Caenorhabditis Elegans", wantedVersion=107)
 #' }
-#'
 #'
 #' @references
 #' Ensembl 2022, Nucleic Acids Research, Volume 50, Issue D1,
@@ -36,12 +32,16 @@
 #' \href{http://stringr.tidyverse.org}
 #' \href{https://github.com/tidyverse/stringr}
 #'
-#'
 #' @import utils
 #' @import rvest
 #' @import stringr
 
-obtainGTF <- function(species, wantedVersion=NA, download = F) {
+obtainGTF <- function(species = NA, wantedVersion = NA, download = F) {
+    if (is.na(species)) {
+        stop("Species name not provided.")
+    } else {
+        ;
+    }
 
     # Format the input name of species
     species <- tolower(species)
@@ -64,7 +64,13 @@ obtainGTF <- function(species, wantedVersion=NA, download = F) {
                   "/gtf/",
                   species)
 
-    gtfFile <- rvest::read_html(url)
+    code <- tryCatch({gtfFile <- rvest::read_html(url)},
+                     error = function(e) {return(1)})
+    if (typeof(code) == "double") {
+        stop("Species name cannot be recognized. Please try again.")
+    } else {
+        ;
+    }
     gtfFile <- rvest::html_nodes(gtfFile, "a")
     gtfFile <- rvest::html_attr(gtfFile, "href")
     gtfFile <- stringr::str_subset(gtfFile,
@@ -72,7 +78,7 @@ obtainGTF <- function(species, wantedVersion=NA, download = F) {
     gtfFile <- gtfFile[[1]]
 
     # Download the file to current working directory
-    if (download == T){
+    if (download == T) {
         utils::download.file(paste0(url,"/", gtfFile),
                              destfile = basename(gtfFile))
     } else {

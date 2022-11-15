@@ -4,7 +4,7 @@
 \alias{obtainDNA}
 \title{Obtain DNA toplevel fa.gz file for a specific species from Ensembl}
 \usage{
-obtainDNA(species, wantedVersion = NA, download = F)
+obtainDNA(species = NA, wantedVersion = NA, download = F)
 }
 \arguments{
 \item{species}{A string indicating the specific name of the species.}

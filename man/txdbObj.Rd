@@ -4,7 +4,7 @@
 \alias{txdbObj}
 \title{Generate txdb object.}
 \usage{
-txdbObj(sfSeq, refTrp = NA, species = NA, release = NA, key = "TXNAME")
+txdbObj(sfSeq = NA, refTrp = NA, species = NA, release = NA, key = "TXNAME")
 }
 \arguments{
 \item{sfSeq}{A character vector indicating the names of salmon
@@ -42,7 +42,6 @@ txi <- txdbObj(sfSeq,
                 species = "Caenorhabditis elegans",
                 release = 107
                 key = "TXNAME")
-
 
 }
 \references{

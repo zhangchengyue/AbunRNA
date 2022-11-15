@@ -22,6 +22,7 @@ Imports:
     biomaRt,
     dplyr,
     ggplot2,
+    pheatmap,
     rstudioapi,
     rvest,
     stats,
@@ -32,6 +33,7 @@ Imports:
 RoxygenNote: 7.2.2
 Roxygen: list(markdown = TRUE)
 Suggests: 
-    testthat,
+    testthat (>= 3.0.0),
     rmarkdown,
     knitr
+Config/testthat/edition: 3

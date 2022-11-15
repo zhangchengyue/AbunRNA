@@ -1,12 +1,11 @@
 #' Principle component analysis on input matrix
 #'
-#'
 #' A function that performs principle component analysis on input matrix, and
 #' plot the graph indicaiting the results, grouped in category given by
 #' the user.
 #'
 #' @param mat A count matrix
-#' @param scale A boolean indicating whether to scale the variables (divide by
+#' @param scalIt A boolean indicating whether to scale the variables (divide by
 #'     standard deviation). Default value is set to TRUE
 #' @param conditions A data frame indicating the conditions of the sample
 #' @param col A string indicating the category where observations should be
@@ -37,19 +36,52 @@
 #' @import ggplot2
 #' @import stats
 
-plotPCA <- function(mat, scale = TRUE, conditions, col, x = 1, y = 2) {
+plotPCA <- function(matrix = NULL, scaleIt = TRUE,
+                    conditions = NULL, col = NA, x = 1, y = 2) {
 
-    pca <- stats::prcomp(mat, scale = scale)
+    if (is.null(matrix)) {
+        stop("Invalid input matrix.")
+    } else {
+        ;
+    }
+
+    pca <- stats::prcomp(x = matrix, scale = scaleIt)
 
     pcaR <- data.frame(pca$rotation)
+    if (! x %in% seq(along = pcaR) || (! y %in% seq(along = pcaR))) {
+        stop("Invalid x and y variables")
+    } else {
+        ;
+    }
 
-    Groups <- conditions[ , colnames(conditions) == col]
     PCx <- pcaR[ , x]
     PCy <- pcaR[ , y]
 
-    plot <- ggplot2::ggplot(pcaR,
-                            ggplot2::aes(x = PCx, y = PCy, fill = Groups)) +
-                            ggplot2::geom_point(shape = 21, col = "black")
+    if (is.null(conditions)) {
+        cat("Conditions not provided. Data would not be categorized.")
+        plot <- ggplot2::ggplot(pcaR,
+                                ggplot2::aes(x = PCx, y = PCy)) +
+            ggplot2::geom_point(shape = 21, col = "black")
+    } else {
+        if (is.na(col)) {
+            stop("col argument not provided")
+        } else {
+            ;
+        }
+
+        if (! (col %in% colnames(conditions))) {
+            stop("col argument not a column of conditions.")
+        } else {
+            ;
+        }
+
+        Groups <- conditions[ , colnames(conditions) == col]
+
+        plot <- ggplot2::ggplot(pcaR,
+                                ggplot2::aes(x = PCx, y = PCy, fill = Groups)) +
+            ggplot2::geom_point(shape = 21, col = "black")
+    }
+
     return(list("PCA" = pcaR, "Plot" = plot))
 }
 

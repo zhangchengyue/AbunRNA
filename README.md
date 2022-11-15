@@ -117,4 +117,6 @@ computing. R Foundation for Statistical Computing, Vienna, Austria. ISBN
 ## Acknowledgements
 
 This package was developed as part of an assessment for 2022 BCB410H:
-Applied Bioinformatics, University of Toronto, Toronto, CANADA.
+Applied Bioinformatics course at the University of Toronto, Toronto,
+CANADA. `AbunRNA` welcomes issues, enhancement requests, and other
+contributions. To submit an issue, use the GitHub issues.
