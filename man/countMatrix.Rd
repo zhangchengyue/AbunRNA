@@ -11,6 +11,7 @@ A data frame with 21390 rows and 3 variables:
 \item{lf_WC_1}{loss of function C.elegans sample sequence}
 \item{gf_WC_1}{gain of function C.elegans sample sequence}
 }
+}
 \source{
 Lunenfeld Tanenbaum Research Institute
 }

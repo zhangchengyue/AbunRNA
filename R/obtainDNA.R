@@ -11,7 +11,7 @@
 #'
 #' @return Returns the name of the fa.gz compressed file of DNA.
 #'
-#' @example
+#' @examples
 #' \dontrun{
 #' obtainDNA("Caenorhabditis Elegans", wantedVersion=107)
 #' }
@@ -32,8 +32,11 @@
 #'
 #' @export
 #' @import utils
-#' @import rvest
-#' @import stringr
+#' @importFrom rvest read_html
+#' @importFrom rvest html_nodes
+#' @importFrom rvest html_attr
+#' @importFrom stringr str_subset
+#' @importFrom biomaRt listEnsemblArchives
 
 
 obtainDNA <- function(species = NA, wantedVersion=NA, download = F) {

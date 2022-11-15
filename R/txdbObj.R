@@ -56,15 +56,7 @@
 #' \href{https://rvest.tidyverse.org/}{Link}
 #' \href{https://github.com/tidyverse/rvest}{Link}
 #'
-#' Wickham H (2022). stringr: Simple, Consistent Wrappers for
-#' Common String Operations.
-#' \href{http://stringr.tidyverse.org}{Link}
-#' \href{https://github.com/tidyverse/stringr}{Link}
 #'
-#' Wickham H, François R, Henry L, Müller K (2022). dplyr: A Grammar of Data
-#' Manipulation.
-#' \href{https://dplyr.tidyverse.org}{Link}
-#' \href{https://github.com/tidyverse/dplyr}{Link}
 #'
 #' Durinck S, Spellman P, Birney E, Huber W (2009). “Mapping identifiers for the
 #'  integration of genomic datasets with the R/Bioconductor package biomaRt.”
@@ -80,13 +72,16 @@
 #'
 #' @export
 #' @import utils
-#' @import rvest
-#' @import stringr
-#' @import biomaRt
-#' @import dplyr
-#' @import GenomicFeatures
-#' @import tximport
-#' @import AnnotationDbi
+#' @importFrom tximport tximport
+#' @importFrom biomaRt keys
+#' @importFrom biomaRt keytypes
+#' @importFrom GenomicFeatures makeTxDbFromGFF
+#' @importFrom AnnotationDbi select
+#' @importFrom stringr str_subset
+#' @importFrom biomaRt listEnsemblArchives
+#' @importFrom rvest read_html
+#' @importFrom rvest html_nodes
+#' @importFrom rvest html_attr
 
 
 txdbObj <- function(sfSeq = NA,

@@ -14,7 +14,7 @@
 #' @return Returns the name of the fa.gz compressed file of cDNA.
 #'
 #'
-#' @example
+#' @examples
 #' \dontrun{
 #' obtainCDNA(species = "Caenorhabditis Elegans", wantedVersion = 107)
 #' }
@@ -33,9 +33,12 @@
 #' \href{https://CRAN.R-project.org/package=stringr}{Link}
 #'
 #' @export
-#' @import utils
-#' @import rvest
-#' @import stringr
+#' @importFrom rvest read_html
+#' @importFrom rvest html_nodes
+#' @importFrom rvest html_attr
+#' @importFrom stringr str_subset
+#' @importFrom utils download.file
+#' @importFrom biomaRt listEnsemblArchives
 
 
 obtainCDNA <- function(species = NA, wantedVersion = NA, download = F) {

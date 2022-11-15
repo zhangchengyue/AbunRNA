@@ -4,7 +4,7 @@
 #' If conda is not previously installed, the function would install for use of
 #' Salmon.
 #'
-#' @example
+#' @examples
 #' \dontrun{
 #' installSalmon()
 #' }
@@ -16,13 +16,14 @@
 #' \href{https://github.com/rstudio/rstudioapi}{Link}
 #'
 #' @export
-#' @import rstudioapi
+#' @importFrom rstudioapi terminalSend
 
 installSalmon <- function() {
     myTerm <- rstudioapi::terminalCreate()
 
     # Download conda if conda not exists
-    rstudioapi::terminalSend(myTerm, "which conda > tmp.txt\n")
+    path <- getwd()
+    rstudioapi::terminalSend(myTerm, paste0("which conda > ", path, "/tmp.txt"))
 
     tmp <- read.table(file = "tmp.txt")
     tmp <- as.character(tmp)

@@ -5,7 +5,7 @@
 #' the user.
 #'
 #' @param matrix A count matrix
-#' @param scalIt A boolean indicating whether to scale the variables (divide by
+#' @param scaleIt A boolean indicating whether to scale the variables (divide by
 #'     standard deviation). Default value is set to TRUE
 #' @param conditions A data frame indicating the conditions of the sample
 #' @param col A string indicating the category where observations should be
@@ -55,8 +55,8 @@
 #' \href{http://www.R-project.org/}{Link}
 #'
 #' @export
-#' @import ggplot2
-#' @import stats
+#' @importFrom stats hclust
+#' @importFrom ggplot2 ggplot
 
 plotPCA <- function(matrix = NULL, scaleIt = TRUE,
                     conditions = NULL, col = NA, x = 1, y = 2) {

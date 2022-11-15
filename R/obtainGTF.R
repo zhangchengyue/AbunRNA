@@ -13,7 +13,7 @@
 #' @return Returns the name of the gtf.gz compressed file of the
 #' reference transcriptome.
 #'
-#' @example
+#' @examples
 #' \dontrun{
 #' obtainGTF("Caenorhabditis Elegans", wantedVersion=107)
 #' }
@@ -32,9 +32,13 @@
 #' \href{http://stringr.tidyverse.org}{Link}
 #' \href{https://github.com/tidyverse/stringr}{Link}
 #'
-#' @import utils
-#' @import rvest
-#' @import stringr
+#' @export
+#' @importFrom rvest read_html
+#' @importFrom rvest html_nodes
+#' @importFrom rvest html_attr
+#' @importFrom stringr str_subset
+#' @importFrom utils download.file
+#' @importFrom biomaRt listEnsemblArchives
 
 obtainGTF <- function(species = NA, wantedVersion = NA, download = F) {
     if (is.na(species)) {

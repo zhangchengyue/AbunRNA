@@ -24,6 +24,12 @@ version is provided, the data will be extracted from the given version. If
 the release version is not provided, then the default version would be the
 latest version of Ensembl Archive.
 }
+\examples{
+\dontrun{
+obtainGTF("Caenorhabditis Elegans", wantedVersion=107)
+}
+
+}
 \references{
 Ensembl 2022, Nucleic Acids Research, Volume 50, Issue D1,
 7 January 2022, Pages D988–D995,

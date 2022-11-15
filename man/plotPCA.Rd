@@ -16,6 +16,9 @@ plotPCA(
 \arguments{
 \item{matrix}{A count matrix}
 
+\item{scaleIt}{A boolean indicating whether to scale the variables (divide by
+standard deviation). Default value is set to TRUE}
+
 \item{conditions}{A data frame indicating the conditions of the sample}
 
 \item{col}{A string indicating the category where observations should be
@@ -25,9 +28,6 @@ grouped into. This should be a column name in "conditions" data frame.}
 from principle component table)}
 
 \item{y}{An integer indicating the y variable}
-
-\item{scalIt}{A boolean indicating whether to scale the variables (divide by
-standard deviation). Default value is set to TRUE}
 }
 \value{
 Returns a list containing the principle component analysis results,

@@ -70,16 +70,6 @@ Wickham H (2022). rvest: Easily Harvest (Scrape) Web Pages.
 \href{https://rvest.tidyverse.org/}{Link}
 \href{https://github.com/tidyverse/rvest}{Link}
 
-Wickham H (2022). stringr: Simple, Consistent Wrappers for
-Common String Operations.
-\href{http://stringr.tidyverse.org}{Link}
-\href{https://github.com/tidyverse/stringr}{Link}
-
-Wickham H, François R, Henry L, Müller K (2022). dplyr: A Grammar of Data
-Manipulation.
-\href{https://dplyr.tidyverse.org}{Link}
-\href{https://github.com/tidyverse/dplyr}{Link}
-
 Durinck S, Spellman P, Birney E, Huber W (2009). “Mapping identifiers for the
 integration of genomic datasets with the R/Bioconductor package biomaRt.”
 Nature Protocols, 4, 1184–1191.

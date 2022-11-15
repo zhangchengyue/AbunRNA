@@ -20,7 +20,6 @@ Imports:
     AnnotationDbi,
     GenomicFeatures,
     biomaRt,
-    dplyr,
     ggplot2,
     pheatmap,
     rstudioapi,

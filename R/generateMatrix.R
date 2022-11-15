@@ -86,12 +86,20 @@
 #' Computational Biology, 9. doi: 10.1371/journal.pcbi.1003118,
 #'
 #' @export
-#' @import biomaRt
-#' @import dplyr
-#' @import tibble
-#' @import GenomicFeatures
-#' @import tximport
-#' @import AnnotationDbi
+#' @import utils
+#' @importFrom stats na.omit
+#' @importFrom tibble column_to_rownames
+#' @importFrom pheatmap pheatmap
+#' @importFrom tximport tximport
+#' @importFrom biomaRt keys
+#' @importFrom biomaRt keytypes
+#' @importFrom GenomicFeatures makeTxDbFromGFF
+#' @importFrom AnnotationDbi select
+#' @importFrom stringr str_subset
+#' @importFrom biomaRt listEnsemblArchives
+#' @importFrom rvest read_html
+#' @importFrom rvest html_nodes
+#' @importFrom rvest html_attr
 
 generateMatrix <- function(sfSeq = NA,
                            refTrp = NA,
