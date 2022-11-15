@@ -21,23 +21,31 @@
 #' @export
 #' @import rstudioapi
 
-installSalmon <- function(){
+installSalmon <- function() {
     myTerm <- rstudioapi::terminalCreate()
 
     # Download conda if conda not exists
     rstudioapi::terminalSend(myTerm, "which conda > tmp.txt\n")
-    tmp <- paste0(as.character(read.table(file = "tmp.txt")), collapse = " ")
-    if (tmp == "conda not found"){
-        # get miniconda
+
+    tmp <- read.table(file = "tmp.txt")
+    tmp <- as.character(tmp)
+    tmp <- paste0(tmp, collapse = " ")
+
+    if (tmp == "conda not found") {
+        # Get miniconda
         rstudioapi::terminalSend(myTerm, "brew install anaconda\n")
     }
+
+    # Delete temporary file immediately after job done
     unlink("tmp.txt")
+
+    # Conda config
     rstudioapi::terminalSend(myTerm,
                              "conda config --add channels conda-forge\n")
     rstudioapi::terminalSend(myTerm,
                              "conda config --add channels bioconda\n")
 
-    # Download salmon from conda
+    # Download Salmon from conda
     rstudioapi::terminalSend(myTerm,
                              "conda create -n salmon salmon -y\n")
 

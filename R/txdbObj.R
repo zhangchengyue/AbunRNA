@@ -82,11 +82,14 @@ txdbObj <- function(sfSeq,
                     refTrp = NA,
                     species=NA,
                     release=NA,
-                    key = "TXNAME"){
+                    key = "TXNAME") {
 
     if (typeof(sfSeq) != "character") {
         stop("Please provide valid .sf quantification files.")
+    } else {
+        ;
     }
+
     # Make a txdb object
     # If no reference transcriptome provided, obtain the annotation from Ensembl
     if (is.na(refTrp)) {
@@ -95,6 +98,8 @@ txdbObj <- function(sfSeq,
         if (is.na(species)) {
 
             stop("No valid reference transcriptome file or species provided.")
+        } else {
+            ;
         }
 
         refTrp <- obtainGTF(species, release)
@@ -105,15 +110,19 @@ txdbObj <- function(sfSeq,
         # Reformat the file name used for further process
         refTrp <- sub(".gz", "", refTrp)
 
+    } else {
+        ;
     }
     txdb <- GenomicFeatures::makeTxDbFromGFF(refTrp)
 
     # Obtain txname keys
     k <- biomaRt::keys(txdb, keytypes = key)
 
-    txGene <- AnnotationDbi::select(txdb, keys = k, columns = "TXNAME", keytype = "GENEID")
+    txGene <- AnnotationDbi::select(txdb, keys = k,
+                                    columns = "TXNAME",
+                                    keytype = "GENEID")
 
-    txGene <- txGene[, c("TXNAME", "GENEID")]
+    txGene <- txGene[ , c("TXNAME", "GENEID")]
 
     txi <- tximport::tximport(sfSeq, type="salmon", tx2gene=txGene)
 

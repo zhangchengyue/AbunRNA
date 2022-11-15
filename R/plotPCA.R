@@ -37,19 +37,19 @@
 #' @import ggplot2
 #' @import stats
 
-plotPCA <- function(mat, scale = TRUE, conditions, col, x = 1, y = 2){
+plotPCA <- function(mat, scale = TRUE, conditions, col, x = 1, y = 2) {
 
     pca <- stats::prcomp(mat, scale = scale)
 
-    pcaR<-data.frame(pca$rotation)
+    pcaR <- data.frame(pca$rotation)
 
-    Groups <- conditions[, colnames(conditions) == col]
-    PCx <- pcaR[, x]
-    PCy <- pcaR[, y]
+    Groups <- conditions[ , colnames(conditions) == col]
+    PCx <- pcaR[ , x]
+    PCy <- pcaR[ , y]
 
     plot <- ggplot2::ggplot(pcaR,
-                            ggplot2::aes(x=PCx, y=PCy, fill = Groups)) +
-        ggplot2::geom_point(shape = 21, col = "black")
+                            ggplot2::aes(x = PCx, y = PCy, fill = Groups)) +
+                            ggplot2::geom_point(shape = 21, col = "black")
     return(list("PCA" = pcaR, "Plot" = plot))
 }
 

@@ -43,17 +43,20 @@
 
 obtainGTF <- function(species, wantedVersion=NA, download = F) {
 
-    # species <- "CaenorhAbditis EleGans"
+    # Format the input name of species
     species <- tolower(species)
 
     species <- gsub(" ", "_", species)
-    # species
 
-    if (is.na(wantedVersion)){
+    if (is.na(wantedVersion)) {
         # Obtain latest version
         ensemblArchives <- biomaRt::listEnsemblArchives()
         versions <- ensemblArchives$version
-        wantedVersion <- suppressWarnings(na.omit(as.numeric(versions))[1])
+        versions <- as.numeric(versions)
+        versions <- na.omit(versions)
+        wantedVersion <- suppressWarnings(versions[1])
+    } else {
+        ;
     }
 
     url <- paste0("https://ftp.ensembl.org/pub/release-",
@@ -71,7 +74,10 @@ obtainGTF <- function(species, wantedVersion=NA, download = F) {
     # Download the file to current working directory
     if (download == T){
         utils::download.file(paste0(url,"/", gtfFile),
-                             destfile = basename(gtfFile))}
+                             destfile = basename(gtfFile))
+    } else {
+        ;
+    }
 
     return(gtfFile)
 }

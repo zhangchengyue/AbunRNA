@@ -103,17 +103,17 @@
 #' @import tximport
 #' @import AnnotationDbi
 #'
-generateMatrix <- function (sfSeq,
-                            refTrp=NA,
-                            sampleNames,
-                            type="salmon",
-                            keytype = "TXNAME",
-                            species=NA,
-                            release=NA,
-                            outputCSV = FALSE,
-                            abunCSV="abunCSV",
-                            heatmap = T,
-                            head = T) {
+generateMatrix <- function(sfSeq,
+                           refTrp=NA,
+                           sampleNames,
+                           type="salmon",
+                           keytype = "TXNAME",
+                           species=NA,
+                           release=NA,
+                           outputCSV = FALSE,
+                           abunCSV="abunCSV",
+                           heatmap = T,
+                           head = T) {
 
     if (typeof(sfSeq) != "character") {
         stop("Please provide valid .sf quantification files.")
@@ -160,14 +160,14 @@ generateMatrix <- function (sfSeq,
     # A function used as a parameter of the "apply" function to filter out the
     # unexpressed genes.
     unEx <- function(x) {
-        return(!all(x==0))
+        return(! all(x == 0))
     }
 
     # Get rid of unexpressed genes
     matrix <- abunAnnot[apply(abunAnnot, 1, unEx), ]
 
-    if (outputCSV == TRUE){
-    write.csv(matrix, file = paste0(abunCSV, ".csv"))
+    if (outputCSV == TRUE) {
+        write.csv(matrix, file = paste0(abunCSV, ".csv"))
     }
 
     # Delete the temporary file
@@ -176,18 +176,18 @@ generateMatrix <- function (sfSeq,
     # Format the matrix
     formatted <- tibble::column_to_rownames(matrix, "Gene ID")
 
-    if (heatmap == T){
-        if (head == T){
+    if (heatmap == T) {
+        if (head == T) {
 
-        (plot <- head(formatted))
-        pheatmap::pheatmap(mat = plot,
-                           display_numbers = T,
-                           number_color = "black",
-                           hclustfun = hclust)
-        }
-        else{
+            (plot <- head(formatted))
+            pheatmap::pheatmap(mat = plot,
+                               display_numbers = T,
+                               number_color = "black",
+                               hclustfun = hclust)
+        } else {
             plot <- formatted
         }
+
         pheatmap::pheatmap(mat = plot,
                            display_numbers = T,
                            number_color = "black",

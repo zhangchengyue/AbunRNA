@@ -38,25 +38,26 @@
 
 obtainCDNA <- function(species, wantedVersion=NA, download = F) {
 
-    # species <- "CaenorhAbditis EleGans"
+    # Format input species name
     species <- tolower(species)
 
     species <- gsub(" ", "_", species)
-    # species
 
-    if (is.na(wantedVersion)){
+    if (is.na(wantedVersion)) {
         # Obtain latest version
         ensemblArchives <- biomaRt::listEnsemblArchives()
         versions <- ensemblArchives$version
-        wantedVersion <- suppressWarnings(na.omit(as.numeric(versions))[1])
+        versions <- as.numeric(versions)
+        versions <- na.omit(versions)
+        wantedVersion <- suppressWarnings(versions[1])
+    } else {
+        ; # Wanted version provided. Do nothing
     }
-    wantedVersion = 105
     url <- paste0("https://ftp.ensembl.org/pub/release-",
                   wantedVersion,
                   "/fasta/",
                   species,
                   "/cdna/")
-    url
     cdna <- rvest::read_html(url)
     cdna <- rvest::html_nodes(cdna, "a")
     cdna <- rvest::html_attr(cdna, "href")
@@ -64,9 +65,12 @@ obtainCDNA <- function(species, wantedVersion=NA, download = F) {
     cdna <- cdna[[1]]
 
     # Download the file to current working directory
-    if (download == T){
+    if (download == T) {
         utils::download.file(paste0(url,"/", cdna),
-                             destfile = basename(cdna))}
+                             destfile = basename(cdna))
+    } else {
+        ;
+    }
 
     return(cdna)
 }

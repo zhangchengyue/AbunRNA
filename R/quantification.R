@@ -45,11 +45,11 @@ quantification <- function(species = NA,
                            release = NA,
                            indexName = "index",
                            fastq,
-                           quantOut){
+                           quantOut) {
 
     # Obtain .cdna.all.fa.gz and .dna.toplevel.fa.gz from Ensembl database
-    cdna <- obtainCDNA(species = species, wantedVersion=release, download=T)
-    dna <- obtainDNA(species = species, wantedVersion=release, download=T)
+    cdna <- obtainCDNA(species = species, wantedVersion = release, download = T)
+    dna <- obtainDNA(species = species, wantedVersion = release, download = T)
 
     myTerm <- rstudioapi::terminalCreate()
     rstudioapi::terminalSend(myTerm, "conda activate salmon\n")
@@ -71,7 +71,7 @@ quantification <- function(species = NA,
 
 
     # Quantification
-    for (i in seq(along = fastq)){
+    for (i in seq(along = fastq)) {
         rstudioapi::terminalSend(myTerm, paste0("fastq=", fastq[i], "\n"))
 
         rstudioapi::terminalSend(myTerm, paste0("quantOut=", quantOut[i], "\n"))
@@ -79,6 +79,7 @@ quantification <- function(species = NA,
         quantCommand <- paste0("salmon quant -i $indexName",
                                " -l A -r $fastq --validateMappings",
                                " -o $quantOut\n")
+
         rstudioapi::terminalSend(myTerm, quantCommand)
     }
     # # Remove files used for indexing

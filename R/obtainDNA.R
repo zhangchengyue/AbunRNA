@@ -40,25 +40,27 @@
 
 obtainDNA <- function(species, wantedVersion=NA, download = F) {
 
-    # species <- "CaenorhAbditis EleGans"
+    # Format the input name of species
     species <- tolower(species)
 
     species <- gsub(" ", "_", species)
-    # species
 
-    if (is.na(wantedVersion)){
+    if (is.na(wantedVersion)) {
         # Obtain latest version
         ensemblArchives <- biomaRt::listEnsemblArchives()
         versions <- ensemblArchives$version
-        wantedVersion <- suppressWarnings(na.omit(as.numeric(versions))[1])
+        versions <- as.numeric(versions)
+        versions <- na.omit(versions)
+        wantedVersion <- suppressWarnings(versions[1])
+    } else {
+        ;
     }
-    wantedVersion = 105
     url <- paste0("https://ftp.ensembl.org/pub/release-",
                   wantedVersion,
                   "/fasta/",
                   species,
                   "/dna/")
-    url
+
     dna <- rvest::read_html(url)
     dna <- rvest::html_nodes(dna, "a")
     dna <- rvest::html_attr(dna, "href")
@@ -66,9 +68,12 @@ obtainDNA <- function(species, wantedVersion=NA, download = F) {
     dna <- dna[[1]]
 
     # Download the file to current working directory
-    if (download == T){
-        utils::download.file(paste0(url,"/", dna),
-                             destfile = basename(dna))}
+    if (download == T) {
+        utils::download.file(paste0(url, "/", dna),
+                             destfile = basename(dna))
+    } else {
+        ;
+    }
 
     return(dna)
 }
