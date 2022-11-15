@@ -50,7 +50,7 @@ wild type and mutant samples.
 
 An overview of the package is illustrated below.
 
-![](./inst/figures/OVERVIEW.png)
+![](./inst/extdata/OVERVIEW.png)
 
 ## Contributions
 

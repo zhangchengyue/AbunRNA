@@ -46,7 +46,7 @@ browseVignettes("AbunRNA")
 
 An overview of the package is illustrated below. 
 
-![](./inst/figures/OVERVIEW.png)
+![](./inst/extdata/OVERVIEW.png)
 
 
 ## Contributions
