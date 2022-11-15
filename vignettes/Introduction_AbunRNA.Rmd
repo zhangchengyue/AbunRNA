@@ -29,7 +29,7 @@ set.seed(1) # for exact reproducibility
        
 ## Introduction
 
-`AbunRNA` is an R package developed to wrap up the commonly used RNA-seq analysis pipelines from the initial software download, search and dnwoload from Ensembl database, indexation and quantification on transcript expression, then to generate count matrix and perform principle component analysis.
+`AbunRNA` is an R package developed to wrap up the commonly used RNA-seq analysis pipelines from the initial software download, search and download from Ensembl database, indexation and quantification on transcript expression, then to generate count matrix and perform principle component analysis.
 
 To download **AbunRNA**, use the following commands:
 
