@@ -2,7 +2,7 @@ library(AbunRNA)
 
 test_that("Check for input matrix", {
 
-    expect_error(plotPCA(scale = TRUE, conditions = conditionsDF,
+    expect_error(plotPCA(scaleIt = TRUE, conditions = conditionsDF,
                          col = "genotype"),
                  "Invalid input matrix.")
 })
@@ -36,16 +36,16 @@ test_that("Check for valid input arguments", {
                                   outputCSV = FALSE)
 
 
-    expect_error(plotPCA(mat = countMatrix, scale = TRUE,
+    expect_error(plotPCA(matrix = countMatrix, scaleIt = TRUE,
                          conditions = conditionsDF,
                          col = "genotype", x = 100, y = 100),
                  "Invalid x and y variables")
 
-    expect_error(plotPCA(mat = countMatrix, scale = TRUE,
+    expect_error(plotPCA(matrix = countMatrix, scaleIt = TRUE,
                          conditions = conditionsDF, x = 1, y = 2),
                  "col argument not provided")
 
-    expect_error(plotPCA(mat = countMatrix, scale = TRUE,
+    expect_error(plotPCA(matrix = countMatrix, scaleIt = TRUE,
                          conditions = conditionsDF,
                          col = "notexists", x = 1, y = 2),
                  "col argument not a column of conditions.")

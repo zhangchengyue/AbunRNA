@@ -4,7 +4,7 @@
 #' plot the graph indicaiting the results, grouped in category given by
 #' the user.
 #'
-#' @param mat A count matrix
+#' @param matrix A count matrix
 #' @param scalIt A boolean indicating whether to scale the variables (divide by
 #'     standard deviation). Default value is set to TRUE
 #' @param conditions A data frame indicating the conditions of the sample
@@ -18,7 +18,29 @@
 #'     and a PCA plot for x and y variables.
 #'
 #' @examples
-#' graphPlot <- plotPCA(mat = countMatrix, scale = TRUE, conditions = conditionsDF,
+#' cw1Quants <- system.file("extdata",
+#'                           "cw1_quants",
+#'                           "quant.sf",
+#'                           package = "AbunRNA")
+#' cl1Quants <- system.file("extdata",
+#'                           "cl1_quants",
+#'                           "quant.sf",
+#'                           package = "AbunRNA")
+#' cg1Quants <- system.file("extdata",
+#'                           "cg1_quants",
+#'                           "quant.sf",
+#'                           package = "AbunRNA")
+#' sfSe <- c(cw1Quants, cl1Quants, cg1Quants)
+#'
+#' # Name the samples correspondingly
+#' samples <- c("WT_WC_1", "lf_WC_1", "gf_WC_1")
+#' countMatrix <- generateMatrix(sfSeq = sfSe,
+#'                       species = "Caenorhabditis elegans",
+#'                       release = 107,
+#'                       sampleNames = samples,
+#'                       outputCSV = FALSE)
+#' graphPlot <- plotPCA(matrix = countMatrix, scaleIt = TRUE,
+#'                      conditions = conditionsDF,
 #'                      col = "genotype")
 #' graphPlot$PCA
 #' graphPlot$Plot
@@ -30,7 +52,7 @@
 #'
 #' R Core Team (2013). R: A language and environment for statistical computing.
 #' R Foundation for Statistical Computing, Vienna, Austria. ISBN 3-900051-07-0
-#' \href{http://www.R-project.org/}
+#' \href{http://www.R-project.org/}{Link}
 #'
 #' @export
 #' @import ggplot2

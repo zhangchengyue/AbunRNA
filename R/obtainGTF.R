@@ -24,13 +24,13 @@
 #' \href{https://doi.org/10.1093/nar/gkab1049}{Link}
 #'
 #' Wickham H (2022). rvest: Easily Harvest (Scrape) Web Pages.
-#' \href{https://rvest.tidyverse.org/}
-#' \href{https://github.com/tidyverse/rvest}
+#' \href{https://rvest.tidyverse.org/}{Link}
+#' \href{https://github.com/tidyverse/rvest}{Link}
 #'
 #' Wickham H (2022). stringr: Simple, Consistent Wrappers for
 #' Common String Operations.
-#' \href{http://stringr.tidyverse.org}
-#' \href{https://github.com/tidyverse/stringr}
+#' \href{http://stringr.tidyverse.org}{Link}
+#' \href{https://github.com/tidyverse/stringr}{Link}
 #'
 #' @import utils
 #' @import rvest
@@ -52,8 +52,8 @@ obtainGTF <- function(species = NA, wantedVersion = NA, download = F) {
         # Obtain latest version
         ensemblArchives <- biomaRt::listEnsemblArchives()
         versions <- ensemblArchives$version
-        versions <- as.numeric(versions)
-        versions <- na.omit(versions)
+        versions <- suppressWarnings(as.numeric(versions))
+        versions <- suppressWarnings(na.omit(versions))
         wantedVersion <- suppressWarnings(versions[1])
     } else {
         ;

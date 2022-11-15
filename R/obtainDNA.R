@@ -12,7 +12,9 @@
 #' @return Returns the name of the fa.gz compressed file of DNA.
 #'
 #' @example
+#' \dontrun{
 #' obtainDNA("Caenorhabditis Elegans", wantedVersion=107)
+#' }
 #'
 #' @references
 #' Ensembl 2022, Nucleic Acids Research, Volume 50, Issue D1,
@@ -20,13 +22,13 @@
 #' \href{https://doi.org/10.1093/nar/gkab1049}{Link}
 #'
 #' Wickham H (2022). rvest: Easily Harvest (Scrape) Web Pages.
-#' \href{https://rvest.tidyverse.org/}
-#' \href{https://github.com/tidyverse/rvest}
+#' \href{https://rvest.tidyverse.org/}{Link}
+#' \href{https://github.com/tidyverse/rvest}{Link}
 #'
 #' Wickham H (2022). stringr: Simple, Consistent Wrappers for
 #' Common String Operations.
-#' \href{http://stringr.tidyverse.org}
-#' \href{https://github.com/tidyverse/stringr}
+#' \href{http://stringr.tidyverse.org}{Link}
+#' \href{https://github.com/tidyverse/stringr}{Link}
 #'
 #' @export
 #' @import utils
@@ -49,8 +51,8 @@ obtainDNA <- function(species = NA, wantedVersion=NA, download = F) {
         # Obtain latest version
         ensemblArchives <- biomaRt::listEnsemblArchives()
         versions <- ensemblArchives$version
-        versions <- as.numeric(versions)
-        versions <- na.omit(versions)
+        versions <- suppressWarnings(as.numeric(versions))
+        versions <- suppressWarnings(na.omit(versions))
         wantedVersion <- suppressWarnings(versions[1])
     } else {
         ;

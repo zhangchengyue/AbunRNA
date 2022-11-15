@@ -8,7 +8,7 @@
 #'     reference transcriptome.
 #'@param release A string indicating the release version of the reference.
 #'     Default is the current release.
-#'@param indexNam A string indicating the name of the output index file.
+#'@param indexName A string indicating the name of the output index file.
 #'@param fastq A character vector indicating the fastq files of sequences.
 #'@param quantOut A character vector indicating the names for quantification files.
 #'
@@ -16,11 +16,13 @@
 #' quantOut directory.
 #'
 #' @examples
+#' \dontrun{
 #' quantification(species = "Caenorhabditis Elegans",
 #'               release = NA,
 #'               indexName = "celegansINDEX",
 #'               fastq = "celegans.fastq",
 #'               quantOut = "celegansQUANT")
+#' }
 #'
 #' @references
 #' Patro, R., Duggal, G., Love, M. et al. Salmon provides fast and bias-aware
@@ -38,7 +40,7 @@ quantification <- function(species = NA,
                            release = NA,
                            indexName = "index",
                            fastq,
-                           quantOut) {
+                           quantOut = "quantOutput") {
 
     # Obtain .cdna.all.fa.gz and .dna.toplevel.fa.gz from Ensembl database
     cdna <- obtainCDNA(species = species, wantedVersion = release, download = T)
@@ -75,11 +77,10 @@ quantification <- function(species = NA,
 
         rstudioapi::terminalSend(myTerm, quantCommand)
     }
-    # # Remove files used for indexing
+    # Remove files used for indexing
     rstudioapi::terminalSend(myTerm, paste("rm", cdna, dna,
                                            "gentrome.fa.gz\n", sep = " "))
     return(invisible(NULL))
 }
-
 
 # [END]

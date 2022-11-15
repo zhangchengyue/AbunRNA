@@ -4,13 +4,17 @@
 \alias{plotPCA}
 \title{Principle component analysis on input matrix}
 \usage{
-plotPCA(mat, scale = TRUE, conditions, col, x = 1, y = 2)
+plotPCA(
+  matrix = NULL,
+  scaleIt = TRUE,
+  conditions = NULL,
+  col = NA,
+  x = 1,
+  y = 2
+)
 }
 \arguments{
-\item{mat}{A count matrix}
-
-\item{scale}{A boolean indicating whether to scale the variables (divide by
-standard deviation). Default value is set to TRUE}
+\item{matrix}{A count matrix}
 
 \item{conditions}{A data frame indicating the conditions of the sample}
 
@@ -21,6 +25,9 @@ grouped into. This should be a column name in "conditions" data frame.}
 from principle component table)}
 
 \item{y}{An integer indicating the y variable}
+
+\item{scalIt}{A boolean indicating whether to scale the variables (divide by
+standard deviation). Default value is set to TRUE}
 }
 \value{
 Returns a list containing the principle component analysis results,
@@ -32,7 +39,29 @@ plot the graph indicaiting the results, grouped in category given by
 the user.
 }
 \examples{
-graphPlot <- plotPCA(mat = countMatrix, scale = TRUE, conditions = conditionsDF,
+cw1Quants <- system.file("extdata",
+                          "cw1_quants",
+                          "quant.sf",
+                          package = "AbunRNA")
+cl1Quants <- system.file("extdata",
+                          "cl1_quants",
+                          "quant.sf",
+                          package = "AbunRNA")
+cg1Quants <- system.file("extdata",
+                          "cg1_quants",
+                          "quant.sf",
+                          package = "AbunRNA")
+sfSe <- c(cw1Quants, cl1Quants, cg1Quants)
+
+# Name the samples correspondingly
+samples <- c("WT_WC_1", "lf_WC_1", "gf_WC_1")
+countMatrix <- generateMatrix(sfSeq = sfSe,
+                      species = "Caenorhabditis elegans",
+                      release = 107,
+                      sampleNames = samples,
+                      outputCSV = FALSE)
+graphPlot <- plotPCA(matrix = countMatrix, scaleIt = TRUE,
+                     conditions = conditionsDF,
                      col = "genotype")
 graphPlot$PCA
 graphPlot$Plot
@@ -45,5 +74,5 @@ Springer-Verlag New York. ISBN 978-3-319-24277-4
 
 R Core Team (2013). R: A language and environment for statistical computing.
 R Foundation for Statistical Computing, Vienna, Austria. ISBN 3-900051-07-0
-\href{http://www.R-project.org/}
+\href{http://www.R-project.org/}{Link}
 }

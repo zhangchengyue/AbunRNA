@@ -20,4 +20,9 @@ countMatrix
 \description{
 An RNAseq experiment conducted using C.elegans from 2021-2022 in Canada.
 }
+\examples{
+\dontrun{
+countMatrix
+}
+}
 \keyword{datasets}

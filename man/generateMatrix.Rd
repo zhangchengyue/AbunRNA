@@ -90,11 +90,7 @@ output <- generateMatrix(sfSeq = sfSe,
                       species = "Caenorhabditis elegans",
                       release = 107,
                       sampleNames = samples,
-                      outputCSV = TRUE,
-                      abunCSV = "abunOUT")
-
-
-
+                      outputCSV = FALSE)
 
 }
 \references{
@@ -105,6 +101,7 @@ Ensembl 2022, Nucleic Acids Research, Volume 50, Issue D1,
 Durinck S, Spellman P, Birney E, Huber W (2009). “Mapping identifiers for the
 integration of genomic datasets with the R/Bioconductor package biomaRt.”
 Nature Protocols, 4, 1184–1191.
+
 Durinck S, Moreau Y, Kasprzyk A, Davis S, De Moor B, Brazma A, Huber W
 (2005). “BioMart and Bioconductor: a powerful link between biological
 databases and microarray data analysis.” Bioinformatics, 21, 3439–3440.
@@ -119,5 +116,4 @@ Müller K, Wickham H (2022). tibble: Simple Data Frames.
 Lawrence M, Huber W, Pagès H, Aboyoun P, Carlson M, Gentleman R, Morgan M,
 Carey V (2013). “Software for Computing and Annotating Genomic Ranges.” PLoS
 Computational Biology, 9. doi: 10.1371/journal.pcbi.1003118,
-\href{http://www.ploscompbiol.org/article/info\%3Adoi\%2F10.1371\%2Fjournal.pcbi.1003118}{Link}.
 }

@@ -1,0 +1,11 @@
+citHeader("To cite AbunRNA in publications use:")
+
+citEntry(
+  entry    = "Unpublished",
+  title    = "AbunRNA: R Package for Transcript Abundance Analysis",
+  author   = "ChengYue Zhang",
+  year     = "2022",
+  textVersion = paste(
+  paste("Zhang, CY. (2022) AbunRNA: R Package for Transcript Abundance Analysis. Unpublished. URL git@github.com:zhangchengyue/AbunRNA.")
+  )
+)

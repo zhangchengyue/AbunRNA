@@ -17,18 +17,35 @@
 #' @return Returns a txdb object
 #'
 #' @examples
+#' cw1Quants <- system.file("extdata",
+#'                           "cw1_quants",
+#'                           "quant.sf",
+#'                           package = "AbunRNA")
+#' cl1Quants <- system.file("extdata",
+#'                           "cl1_quants",
+#'                           "quant.sf",
+#'                           package = "AbunRNA")
+#' cg1Quants <- system.file("extdata",
+#'                           "cg1_quants",
+#'                           "quant.sf",
+#'                           package = "AbunRNA")
+#' sfSe <- c(cw1Quants, cl1Quants, cg1Quants)
 #' # Example 1:
 #' # Directly obtain the latest reference transcriptome from Ensembl database
-#' txi <- txdbObj(sfSeq,
+#' \dontrun{
+#' txi <- txdbObj(sfSeq = sfSe,
 #'                 species = "Caenorhabditis elegans",
 #'                 key = "TXNAME")
+#' }
 #'
 #' # Example 2:
 #' # Directly obtain version 107 reference transcriptome from Ensembl database
-#' txi <- txdbObj(sfSeq,
+#' \dontrun{
+#' txi <- txdbObj(sfSeq = sfSe,
 #'                 species = "Caenorhabditis elegans",
-#'                 release = 107
+#'                 release = 107,
 #'                 key = "TXNAME")
+#' }
 #'
 #' @references
 #' Ensembl 2022, Nucleic Acids Research, Volume 50, Issue D1,
@@ -36,13 +53,13 @@
 #' \href{https://doi.org/10.1093/nar/gkab1049}{Link}
 #'
 #' Wickham H (2022). rvest: Easily Harvest (Scrape) Web Pages.
-#' \href{https://rvest.tidyverse.org/}
-#' \href{https://github.com/tidyverse/rvest}
+#' \href{https://rvest.tidyverse.org/}{Link}
+#' \href{https://github.com/tidyverse/rvest}{Link}
 #'
 #' Wickham H (2022). stringr: Simple, Consistent Wrappers for
 #' Common String Operations.
-#' \href{http://stringr.tidyverse.org}
-#' \href{https://github.com/tidyverse/stringr}
+#' \href{http://stringr.tidyverse.org}{Link}
+#' \href{https://github.com/tidyverse/stringr}{Link}
 #'
 #' Wickham H, François R, Henry L, Müller K (2022). dplyr: A Grammar of Data
 #' Manipulation.
@@ -60,7 +77,6 @@
 #' Lawrence M, Huber W, Pagès H, Aboyoun P, Carlson M, Gentleman R, Morgan M,
 #' Carey V (2013). “Software for Computing and Annotating Genomic Ranges.” PLoS
 #' Computational Biology, 9. doi: 10.1371/journal.pcbi.1003118,
-#' \href{http://www.ploscompbiol.org/article/info%3Adoi%2F10.1371%2Fjournal.pcbi.1003118}{Link}.
 #'
 #' @export
 #' @import utils
@@ -97,7 +113,7 @@ txdbObj <- function(sfSeq = NA,
             ;
         }
 
-        refTrp <- obtainGTF(species, release)
+        refTrp <- obtainGTF(species, wantedVersion = release, download = T)
 
         # Unzip the gtf file
         system(paste("gunzip", refTrp))

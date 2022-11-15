@@ -28,11 +28,11 @@ Ensembl 2022, Nucleic Acids Research, Volume 50, Issue D1,
 \href{https://doi.org/10.1093/nar/gkab1049}{Link}
 
 Wickham H (2022). rvest: Easily Harvest (Scrape) Web Pages.
-\href{https://rvest.tidyverse.org/}
-\href{https://github.com/tidyverse/rvest}
+\href{https://rvest.tidyverse.org/}{Link}
+\href{https://github.com/tidyverse/rvest}{Link}
 
 Wickham H (2022). stringr: Simple, Consistent Wrappers for
 Common String Operations.
-\href{http://stringr.tidyverse.org}
-\href{https://github.com/tidyverse/stringr}
+\href{http://stringr.tidyverse.org}{Link}
+\href{https://github.com/tidyverse/stringr}{Link}
 }

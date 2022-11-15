@@ -10,12 +10,11 @@
 #'    \item{lf_WC_1}{loss of function C.elegans sample sequence}
 #'    \item{gf_WC_1}{gain of function C.elegans sample sequence}
 #'
-#' @example
+#' @examples
 #' \dontrun{
 #' countMatrix
 #' }
 "countMatrix"
-
 
 #' Genotypes for C.elegans samples
 #'
@@ -36,3 +35,5 @@
 #' conditionsDF
 #' }
 "conditionsDF"
+
+# [END]

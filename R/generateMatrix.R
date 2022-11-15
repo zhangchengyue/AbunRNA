@@ -8,7 +8,6 @@
 #' function can also plot a heatmap to visualize the transcript abundance among
 #' wild type and mutant samples.
 #'
-#'
 #' @param sfSeq A character vector indicating the names of salmon
 #'     output .sf files.
 #' @param refTrp A string indicating the path to the reference
@@ -29,11 +28,9 @@
 #' @param head A boolean indicating whether to use only the first 6 lines of
 #'     the count matrix. Useful as an example when the matrix is large.
 #'
-#'
 #' @return Returns a data frame where each row indicates a gene, each column
 #' indicates a sample, each cell indicates the expression abundance of a gene
 #' in a sample. This can be used for downstream analysis.
-#'
 #'
 #' @examples
 #' # Provide the specific name of the species to directly obtain the
@@ -62,11 +59,7 @@
 #'                       species = "Caenorhabditis elegans",
 #'                       release = 107,
 #'                       sampleNames = samples,
-#'                       outputCSV = TRUE,
-#'                       abunCSV = "abunOUT")
-#'
-#'
-#'
+#'                       outputCSV = FALSE)
 #'
 #' @references
 #' Ensembl 2022, Nucleic Acids Research, Volume 50, Issue D1,
@@ -76,7 +69,7 @@
 #' Durinck S, Spellman P, Birney E, Huber W (2009). “Mapping identifiers for the
 #'  integration of genomic datasets with the R/Bioconductor package biomaRt.”
 #'  Nature Protocols, 4, 1184–1191.
-
+#'
 #' Durinck S, Moreau Y, Kasprzyk A, Davis S, De Moor B, Brazma A, Huber W
 #' (2005). “BioMart and Bioconductor: a powerful link between biological
 #' databases and microarray data analysis.” Bioinformatics, 21, 3439–3440.
@@ -91,9 +84,6 @@
 #' Lawrence M, Huber W, Pagès H, Aboyoun P, Carlson M, Gentleman R, Morgan M,
 #' Carey V (2013). “Software for Computing and Annotating Genomic Ranges.” PLoS
 #' Computational Biology, 9. doi: 10.1371/journal.pcbi.1003118,
-#' \href{http://www.ploscompbiol.org/article/info%3Adoi%2F10.1371%2Fjournal.pcbi.1003118}{Link}.
-#'
-#'
 #'
 #' @export
 #' @import biomaRt
@@ -102,7 +92,7 @@
 #' @import GenomicFeatures
 #' @import tximport
 #' @import AnnotationDbi
-#'
+
 generateMatrix <- function(sfSeq = NA,
                            refTrp = NA,
                            sampleNames = NA,
@@ -135,7 +125,7 @@ generateMatrix <- function(sfSeq = NA,
         if (is.na(release)) {
             refTrp <- obtainGTF(species = species, download = T)
         } else {
-            refTrp <- obtainGTF(species = species, release = release,
+            refTrp <- obtainGTF(species = species, wantedVersion = release,
                                 download = T)
         }
 

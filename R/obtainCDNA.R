@@ -15,7 +15,9 @@
 #'
 #'
 #' @example
-#' obtaincDNA(species = "Caenorhabditis Elegans", wantedVersion = 107)
+#' \dontrun{
+#' obtainCDNA(species = "Caenorhabditis Elegans", wantedVersion = 107)
+#' }
 #'
 #'
 #' @references
@@ -53,8 +55,8 @@ obtainCDNA <- function(species = NA, wantedVersion = NA, download = F) {
         # Obtain latest version
         ensemblArchives <- biomaRt::listEnsemblArchives()
         versions <- ensemblArchives$version
-        versions <- as.numeric(versions)
-        versions <- na.omit(versions)
+        versions <- suppressWarnings(as.numeric(versions))
+        versions <- suppressWarnings(na.omit(versions))
         wantedVersion <- suppressWarnings(versions[1])
     } else {
         ; # Wanted version provided. Do nothing

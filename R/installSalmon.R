@@ -5,7 +5,9 @@
 #' Salmon.
 #'
 #' @example
-#' install()
+#' \dontrun{
+#' installSalmon()
+#' }
 #'
 #' @references
 #' Ushey K, Allaire J, Wickham H, Ritchie G (2022). rstudioapi: Safely Access

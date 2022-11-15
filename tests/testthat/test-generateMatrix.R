@@ -89,7 +89,7 @@ test_that("Generates correct count matrix", {
     actualMatrix <- generateMatrix(sfSeq = sfSe,
                                    species = "Caenorhabditis Elegans",
                                    sampleNames = samples,
-                                   outputCSV = FALSE)
+                                   outputCSV = TRUE)
     actualMatrix <- head(actualMatrix)
     expect_equal(expectedMatrix, actualMatrix)
 })
