@@ -35,6 +35,9 @@ devtools::install_github("zhangchengyue/AbunRNA", build_vignettes = TRUE)
 library("AbunRNA")
 ```
 
+To run shinyApp:
+Under construction
+
 ## Overview
 
 ``` r

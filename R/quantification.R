@@ -71,7 +71,7 @@ quantification <- function(species = NA,
 
 
     # Quantification
-    for (i in seq(length(fastq))){
+    for (i in seq(along = fastq)){
         rstudioapi::terminalSend(myTerm, paste0("fastq=", fastq[i], "\n"))
 
         rstudioapi::terminalSend(myTerm, paste0("quantOut=", quantOut[i], "\n"))
