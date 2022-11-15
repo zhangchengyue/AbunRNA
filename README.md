@@ -39,18 +39,27 @@ To run shinyApp: Under construction
 ``` r
 ls("package:AbunRNA")
 data(package = "AbunRNA") 
-browseVignettes("AbunRNA")
 ```
 
-`AbunRNA` contains a function to install the popularly used Salmon
-software through bioconda, a function to directly obtain reference
-transcriptome from Ensembl database, a function to run quantification
-through Salmon, a function to generate TxDb object for storing
-transcript annotations, a function to generate the count matrix from
-TxDb and optionally plot the heatmap to visualize abundance, a function
-that performs principle component analysis for the matrix, and plot the
-graph to further visualize the variation in expression abundance among
-wild type and mutant samples.
+`AbunRNA` contains functions to:
+
+1.  install the popularly used Salmon software through bioconda (See
+    function ***installSalmon***)
+2.  directly obtain reference transcriptome from Ensembl database (See
+    function ***obtainCDNA***, ***obtainDNA***, and ***obtainGTF***)
+3.  run quantification through Salmon (See function
+    ***quantification***)
+4.  generate TxDb object for storing transcript annotations (See
+    function ***txdbObj***)
+5.  generate the count matrix from TxDb and optionally plot the heatmap
+    to visualize abundance (See function ***generateMatrix***)
+6.  performs principle component analysis for the matrix, and plot the
+    graph to further visualize the variation in expression abundance
+    among wild type and mutant samples.(See function ***plotPCA***)
+
+<!-- -->
+
+    browseVignettes("AbunRNA")
 
 An overview of the package is illustrated below.
 

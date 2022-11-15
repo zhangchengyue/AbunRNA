@@ -83,7 +83,7 @@ plotPCA <- function(matrix = NULL, scaleIt = TRUE,
         cat("Conditions not provided. Data would not be categorized.")
         plot <- ggplot2::ggplot(pcaR,
                                 ggplot2::aes(x = PCx, y = PCy)) +
-            ggplot2::geom_point(shape = 21, col = "black")
+            ggplot2::geom_point(size = 5, shape = 21, col = "black")
     } else {
         if (is.na(col)) {
             stop("col argument not provided")
@@ -101,7 +101,7 @@ plotPCA <- function(matrix = NULL, scaleIt = TRUE,
 
         plot <- ggplot2::ggplot(pcaR,
                                 ggplot2::aes(x = PCx, y = PCy, fill = Groups)) +
-            ggplot2::geom_point(shape = 21, col = "black")
+            ggplot2::geom_point(size = 5, shape = 21, col = "black")
     }
 
     return(list("PCA" = pcaR, "Plot" = plot))
