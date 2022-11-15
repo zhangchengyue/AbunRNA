@@ -27,7 +27,7 @@
 #' @references
 #' Wickham H (2016). ggplot2: Elegant Graphics for Data Analysis.
 #' Springer-Verlag New York. ISBN 978-3-319-24277-4
-#' \href{https://ggplot2.tidyverse.org}
+#' \href{ https://CRAN.R-project.org/package=ggplot2}{Link}
 #'
 #' R Core Team (2013). R: A language and environment for statistical computing.
 #' R Foundation for Statistical Computing, Vienna, Austria. ISBN 3-900051-07-0

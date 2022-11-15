@@ -83,12 +83,10 @@
 #'
 #' Wickham H, François R, Henry L, Müller K (2022). dplyr: A Grammar of Data
 #' Manipulation.
-#' \href{https://dplyr.tidyverse.org}{Link}
-#' \href{https://github.com/tidyverse/dplyr}{Link}
+#' \href{https://CRAN.R-project.org/package=dplyr}{Link}
 #'
 #' Müller K, Wickham H (2022). tibble: Simple Data Frames.
-#' \href{https://tibble.tidyverse.org/}{Link}
-#' \href{https://github.com/tidyverse/tibble}{Link}
+#' \href{https://CRAN.R-project.org/package=tibble}{Link}
 #'
 #' Lawrence M, Huber W, Pagès H, Aboyoun P, Carlson M, Gentleman R, Morgan M,
 #' Carey V (2013). “Software for Computing and Annotating Genomic Ranges.” PLoS

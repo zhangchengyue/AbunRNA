@@ -32,7 +32,7 @@
 #' \href{http://stringr.tidyverse.org}
 #' \href{https://github.com/tidyverse/stringr}
 #'
-#'
+#' @export
 #' @import utils
 #' @import rvest
 #' @import stringr

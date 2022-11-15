@@ -24,15 +24,13 @@
 #' \href{https://doi.org/10.1093/nar/gkab1049}{Link}
 #'
 #' Wickham H (2022). rvest: Easily Harvest (Scrape) Web Pages.
-#' \href{https://rvest.tidyverse.org/}
-#' \href{https://github.com/tidyverse/rvest}
+#' \href{ https://CRAN.R-project.org/package=rvest}{Link}
 #'
 #' Wickham H (2022). stringr: Simple, Consistent Wrappers for
 #' Common String Operations.
-#' \href{http://stringr.tidyverse.org}
-#' \href{https://github.com/tidyverse/stringr}
+#' \href{https://CRAN.R-project.org/package=stringr}{Link}
 #'
-#'
+#' @export
 #' @import utils
 #' @import rvest
 #' @import stringr
