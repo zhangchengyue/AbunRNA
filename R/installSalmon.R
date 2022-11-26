@@ -23,8 +23,9 @@ installSalmon <- function() {
 
     # Download conda if conda not exists
     path <- getwd()
-    rstudioapi::terminalSend(myTerm, paste0("which conda > ", path, "/tmp.txt"))
-
+    rstudioapi::terminalSend(myTerm, paste0("which conda > ",
+                                            path, "/tmp.txt\n"))
+    Sys.sleep(2)
     tmp <- read.table(file = "tmp.txt")
     tmp <- as.character(tmp)
     tmp <- paste0(tmp, collapse = " ")
@@ -47,7 +48,7 @@ installSalmon <- function() {
     rstudioapi::terminalSend(myTerm,
                              "conda create -n salmon salmon -y\n")
 
-    # Activate salmon conda environment
+    # Activate salmon conda environmen
     rstudioapi::terminalSend(myTerm,
                              "conda activate salmon\n")
     return(invisible(NULL))

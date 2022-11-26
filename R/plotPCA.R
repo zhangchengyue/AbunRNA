@@ -4,15 +4,17 @@
 #' plot the graph indicaiting the results, grouped in category given by
 #' the user.
 #'
-#' @param matrix A count matrix
+#' @param matrix A count matrix. Default is NULL.
 #' @param scaleIt A boolean indicating whether to scale the variables (divide by
-#'     standard deviation). Default value is set to TRUE
-#' @param conditions A data frame indicating the conditions of the sample
+#'     standard deviation). Default value is set to TRUE.
+#' @param conditions A data frame indicating the conditions of the sample.
+#'     Default is NULL.
 #' @param col A string indicating the category where observations should be
 #'     grouped into. This should be a column name in "conditions" data frame.
+#'     Default is NA.
 #' @param x An integer indicating the x variable (e.g. x = 1 would extrace PC1
-#'     from principle component table)
-#' @param y An integer indicating the y variable
+#'     from principle component table). Default would be PC1.
+#' @param y An integer indicating the y variable. Default would be PC2.
 #'
 #' @return Returns a list containing the principle component analysis results,
 #'     and a PCA plot for x and y variables.

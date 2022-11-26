@@ -8,18 +8,19 @@ txdbObj(sfSeq = NA, refTrp = NA, species = NA, release = NA, key = "TXNAME")
 }
 \arguments{
 \item{sfSeq}{A character vector indicating the names of salmon
-output .sf files.}
+output .sf files. The default value is NA.}
 
 \item{refTrp}{A string indicating the path to the reference
-transcriptome file. The default value is NA}
+transcriptome file. The default value is NA.}
 
 \item{species}{A string indicating the specific name of the species to get
-reference transcriptome.}
+reference transcriptome. The default value is NA.}
 
 \item{release}{A string indicating the release version of the reference.
-Default is the current release.}
+Default is the current release. The default value is NA.}
 
-\item{key}{A stirng indicating the keytype to be used.}
+\item{key}{A stirng indicating the keytype to be used. The default value
+is "TXNAME".}
 }
 \value{
 Returns a txdb object

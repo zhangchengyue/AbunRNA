@@ -7,24 +7,28 @@
 #' wild type and mutant samples.
 #'
 #' @param sfSeq A character vector indicating the names of salmon
-#'     output .sf files.
+#'     output .sf files. The default value is NA.
 #' @param refTrp A string indicating the path to the reference
-#'     transcriptome file. The default value is NA
+#'     transcriptome file. The default value is NA.
 #' @param sampleNames A character vector indicating sample names of the raw
-#'     sequences.
+#'     sequences. The default value is NA.
 #' @param type A string indicating the tool used for generating transcript
-#'     expression abundance from raw sequence. The default tool is set to salmon.
+#'     expression abundance from raw sequence. The default tool is salmon.
 #' @param keytype A stirng indicating the keytype to be used. Default
 #'     setting is TXNAME.
 #' @param species A string indicating the specific name of the species to get
-#'     reference transcriptome.
+#'     reference transcriptome. The default value is NA.
 #' @param release A string indicating the release version of the reference.
-#'     Default is the current release.
-#' @param outputCSV A boolean indicating whether to output the matrix as CSV
-#' @param abunCSV A character string indicating the basename of the output CSV
-#' @param heatmap A boolean indicating whether to plot the heat map
+#'     Default is the current release. The default value is NA.
+#' @param outputCSV A boolean indicating whether to output the matrix as CSV.
+#'     The default value is FALSE.
+#' @param abunCSV A character string indicating the basename of the output CSV.
+#'     The default output file name is "abunCSV".
+#' @param heatmap A boolean indicating whether to plot the heat map. The default
+#'     value is TRUE.
 #' @param head A boolean indicating whether to use only the first 6 lines of
-#'     the count matrix. Useful as an example when the matrix is large.
+#'     the count matrix. This is useful to view as an example when the matrix is
+#'     large. The default value is TRUE.
 #'
 #' @return Returns a data frame where each row indicates a gene, each column
 #' indicates a sample, each cell indicates the expression abundance of a gene

@@ -5,14 +5,15 @@
 #' and the downstream expression analysis pipeline.
 #'
 #' @param sfSeq A character vector indicating the names of salmon
-#'     output .sf files.
+#'     output .sf files. The default value is NA.
 #' @param refTrp A string indicating the path to the reference
-#'     transcriptome file. The default value is NA
+#'     transcriptome file. The default value is NA.
 #' @param species A string indicating the specific name of the species to get
-#'     reference transcriptome.
+#'     reference transcriptome. The default value is NA.
 #' @param release A string indicating the release version of the reference.
-#'     Default is the current release.
-#' @param key A stirng indicating the keytype to be used.
+#'     Default is the current release. The default value is NA.
+#' @param key A stirng indicating the keytype to be used. The default value
+#'     is "TXNAME".
 #'
 #' @return Returns a txdb object
 #'

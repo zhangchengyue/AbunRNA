@@ -14,20 +14,22 @@ plotPCA(
 )
 }
 \arguments{
-\item{matrix}{A count matrix}
+\item{matrix}{A count matrix. Default is NULL.}
 
 \item{scaleIt}{A boolean indicating whether to scale the variables (divide by
-standard deviation). Default value is set to TRUE}
+standard deviation). Default value is set to TRUE.}
 
-\item{conditions}{A data frame indicating the conditions of the sample}
+\item{conditions}{A data frame indicating the conditions of the sample.
+Default is NULL.}
 
 \item{col}{A string indicating the category where observations should be
-grouped into. This should be a column name in "conditions" data frame.}
+grouped into. This should be a column name in "conditions" data frame.
+Default is NA.}
 
 \item{x}{An integer indicating the x variable (e.g. x = 1 would extrace PC1
-from principle component table)}
+from principle component table). Default would be PC1.}
 
-\item{y}{An integer indicating the y variable}
+\item{y}{An integer indicating the y variable. Default would be PC2.}
 }
 \value{
 Returns a list containing the principle component analysis results,

@@ -1,5 +1,5 @@
 library(AbunRNA)
-
+library(testthat)
 test_that("Check for input matrix", {
 
     expect_error(plotPCA(scaleIt = TRUE, conditions = conditionsDF,
@@ -10,7 +10,7 @@ test_that("Check for input matrix", {
 #> Test passed :)
 
 
-test_that("Check for valid input arguments", {
+testthat::test_that("Check for valid input arguments", {
 
     cw1Quants <- system.file("extdata",
                              "cw1_quants",

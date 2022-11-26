@@ -2,9 +2,7 @@
 % Please edit documentation in R/generateMatrix.R
 \name{generateMatrix}
 \alias{generateMatrix}
-\title{Generate a count matrix from salmon output files.
-Plot heatmap to visualize transcript abundance among wild type and mutants
-if indicated.}
+\title{Generate a count matrix and Plot heatmap}
 \usage{
 generateMatrix(
   sfSeq = NA,
@@ -22,34 +20,38 @@ generateMatrix(
 }
 \arguments{
 \item{sfSeq}{A character vector indicating the names of salmon
-output .sf files.}
+output .sf files. The default value is NA.}
 
 \item{refTrp}{A string indicating the path to the reference
-transcriptome file. The default value is NA}
+transcriptome file. The default value is NA.}
 
 \item{sampleNames}{A character vector indicating sample names of the raw
-sequences.}
+sequences. The default value is NA.}
 
 \item{type}{A string indicating the tool used for generating transcript
-expression abundance from raw sequence. The default tool is set to salmon.}
+expression abundance from raw sequence. The default tool is salmon.}
 
 \item{keytype}{A stirng indicating the keytype to be used. Default
 setting is TXNAME.}
 
 \item{species}{A string indicating the specific name of the species to get
-reference transcriptome.}
+reference transcriptome. The default value is NA.}
 
 \item{release}{A string indicating the release version of the reference.
-Default is the current release.}
+Default is the current release. The default value is NA.}
 
-\item{outputCSV}{A boolean indicating whether to output the matrix as CSV}
+\item{outputCSV}{A boolean indicating whether to output the matrix as CSV.
+The default value is FALSE.}
 
-\item{abunCSV}{A character string indicating the basename of the output CSV}
+\item{abunCSV}{A character string indicating the basename of the output CSV.
+The default output file name is "abunCSV".}
 
-\item{heatmap}{A boolean indicating whether to plot the heat map}
+\item{heatmap}{A boolean indicating whether to plot the heat map. The default
+value is TRUE.}
 
 \item{head}{A boolean indicating whether to use only the first 6 lines of
-the count matrix. Useful as an example when the matrix is large.}
+the count matrix. This is useful to view as an example when the matrix is
+large. The default value is TRUE.}
 }
 \value{
 Returns a data frame where each row indicates a gene, each column
