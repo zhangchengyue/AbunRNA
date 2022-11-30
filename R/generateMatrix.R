@@ -16,9 +16,6 @@
 #'     expression abundance from raw sequence. The default tool is salmon.
 #' @param keytype A stirng indicating the keytype to be used. Default
 #'     setting is TXNAME.
-#' @param element A string indicating which element should be generated from the
-#'     matrix. Elements include: "abundance", "count", "length". The default
-#'     value is set to "abundance".
 #' @param species A string indicating the specific name of the species to get
 #'     reference transcriptome. The default value is NA.
 #' @param release A string indicating the release version of the reference.
@@ -111,11 +108,10 @@ generateMatrix <- function(sfSeq = NA,
                            sampleNames = NA,
                            type = "salmon",
                            keytype = "TXNAME",
-                           element = "abundance",
                            species = NA,
                            release = NA,
                            outputCSV = FALSE,
-                           nameCSV = "matrixCSV",
+                           abunCSV = "abunCSV",
                            heatmap = T,
                            head = T) {
 
