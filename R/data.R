@@ -13,9 +13,9 @@
 #'
 #' @examples
 #' \dontrun{
-#' countMatrix
+#' abundanceMatrix
 #' }
-"countMatrix"
+"abundanceMatrix"
 
 #' Genotypes for C.elegans samples
 #'

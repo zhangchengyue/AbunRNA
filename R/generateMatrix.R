@@ -16,14 +16,17 @@
 #'     expression abundance from raw sequence. The default tool is salmon.
 #' @param keytype A stirng indicating the keytype to be used. Default
 #'     setting is TXNAME.
+#' @param element A string indicating which element should be generated from the
+#'     matrix. Elements include: "abundance", "count", "length". The default
+#'     value is set to "abundance".
 #' @param species A string indicating the specific name of the species to get
 #'     reference transcriptome. The default value is NA.
 #' @param release A string indicating the release version of the reference.
 #'     Default is the current release. The default value is NA.
 #' @param outputCSV A boolean indicating whether to output the matrix as CSV.
 #'     The default value is FALSE.
-#' @param abunCSV A character string indicating the basename of the output CSV.
-#'     The default output file name is "abunCSV".
+#' @param nameCSV A character string indicating the basename of the output CSV.
+#'     The default output file name is "matrixCSV".
 #' @param heatmap A boolean indicating whether to plot the heat map. The default
 #'     value is TRUE.
 #' @param head A boolean indicating whether to use only the first 6 lines of
@@ -108,10 +111,11 @@ generateMatrix <- function(sfSeq = NA,
                            sampleNames = NA,
                            type = "salmon",
                            keytype = "TXNAME",
+                           element = "abundance",
                            species = NA,
                            release = NA,
                            outputCSV = FALSE,
-                           abunCSV = "abunCSV",
+                           nameCSV = "matrixCSV",
                            heatmap = T,
                            head = T) {
 
@@ -154,15 +158,25 @@ generateMatrix <- function(sfSeq = NA,
                    key = keytype)
 
     # Create temporary file
-    abunFile <- "tmp.csv"
+    tmpFile <- "tmp.csv"
 
-    write.csv(txi$abundance, file = abunFile)
+    if (element == "abundance") {
+        write.csv(txi$abundance, file = tmpFile)
+        }
+    else if (element == "count") {
+        write.csv(txi$count, file = tmpFile)
+    }
+    else if (element == "length") {
+        write.csv(txi$length, file = tmpFile)
+    } else {
+        stop("Not an valid element. Please use abundance, count, or length.")
+    }
 
-    abundance <- read.csv(abunFile)
+    tmpMatrix <- read.csv(tmpFile)
 
-    abunAnnot <- data.frame(abundance)
+    annot <- data.frame(tmpMatrix)
 
-    colnames(abunAnnot) <- c("Gene ID", sampleNames)
+    colnames(annot) <- c("Gene ID", sampleNames)
 
     # A function used as a parameter of the "apply" function to filter out the
     # unexpressed genes.
@@ -171,10 +185,10 @@ generateMatrix <- function(sfSeq = NA,
     }
 
     # Get rid of unexpressed genes
-    matrix <- abunAnnot[apply(abunAnnot, 1, unEx), ]
+    matrix <- annot[apply(annot, 1, unEx), ]
 
     if (outputCSV == TRUE) {
-        write.csv(matrix, file = paste0(abunCSV, ".csv"))
+        write.csv(matrix, file = paste0(nameCSV, ".csv"))
     }
 
     # Delete the temporary file
