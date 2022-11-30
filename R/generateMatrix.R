@@ -22,8 +22,8 @@
 #'     Default is the current release. The default value is NA.
 #' @param outputCSV A boolean indicating whether to output the matrix as CSV.
 #'     The default value is FALSE.
-#' @param nameCSV A character string indicating the basename of the output CSV.
-#'     The default output file name is "matrixCSV".
+#' @param abunCSV A character string indicating the basename of the output CSV.
+#'     The default output file name is "abunCSV".
 #' @param heatmap A boolean indicating whether to plot the heat map. The default
 #'     value is TRUE.
 #' @param head A boolean indicating whether to use only the first 6 lines of
@@ -154,25 +154,15 @@ generateMatrix <- function(sfSeq = NA,
                    key = keytype)
 
     # Create temporary file
-    tmpFile <- "tmp.csv"
+    abunFile <- "tmp.csv"
 
-    if (element == "abundance") {
-        write.csv(txi$abundance, file = tmpFile)
-        }
-    else if (element == "count") {
-        write.csv(txi$count, file = tmpFile)
-    }
-    else if (element == "length") {
-        write.csv(txi$length, file = tmpFile)
-    } else {
-        stop("Not an valid element. Please use abundance, count, or length.")
-    }
+    write.csv(txi$abundance, file = abunFile)
 
-    tmpMatrix <- read.csv(tmpFile)
+    abundance <- read.csv(abunFile)
 
-    annot <- data.frame(tmpMatrix)
+    abunAnnot <- data.frame(abundance)
 
-    colnames(annot) <- c("Gene ID", sampleNames)
+    colnames(abunAnnot) <- c("Gene ID", sampleNames)
 
     # A function used as a parameter of the "apply" function to filter out the
     # unexpressed genes.
@@ -181,10 +171,10 @@ generateMatrix <- function(sfSeq = NA,
     }
 
     # Get rid of unexpressed genes
-    matrix <- annot[apply(annot, 1, unEx), ]
+    matrix <- abunAnnot[apply(abunAnnot, 1, unEx), ]
 
     if (outputCSV == TRUE) {
-        write.csv(matrix, file = paste0(nameCSV, ".csv"))
+        write.csv(matrix, file = paste0(abunCSV, ".csv"))
     }
 
     # Delete the temporary file
