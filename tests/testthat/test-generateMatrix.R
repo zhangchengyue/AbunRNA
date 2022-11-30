@@ -9,7 +9,6 @@ test_that("Quantification files not valid", {
                                 species = NA,
                                 release = NA,
                                 outputCSV = FALSE,
-                                abunCSV = "abunCSV",
                                 heatmap = T,
                                 head = T),
                  "Please provide valid .sf quantification files.")
@@ -22,7 +21,6 @@ test_that("Quantification files not valid", {
                                 species = NA,
                                 release = NA,
                                 outputCSV = FALSE,
-                                abunCSV = "abunCSV",
                                 heatmap = T,
                                 head = T),
                  "Please provide valid .sf quantification files.")
@@ -35,7 +33,6 @@ test_that("Quantification files not valid", {
                                 species = NA,
                                 release = NA,
                                 outputCSV = FALSE,
-                                abunCSV = "abunCSV",
                                 heatmap = T,
                                 head = T),
                  "Please provide valid .sf quantification files.")
@@ -47,7 +44,6 @@ test_that("Quantification files not valid", {
                                 species = NA,
                                 release = NA,
                                 outputCSV = FALSE,
-                                abunCSV = "abunCSV",
                                 heatmap = T,
                                 head = T),
                  "Please provide valid .sf quantification files.")
