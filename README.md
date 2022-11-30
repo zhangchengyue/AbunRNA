@@ -34,35 +34,6 @@ library("AbunRNA")
 
 To run shinyApp: Under construction
 
-Sometimes errors about dependencies are showing up, usually that would
-happen for the following packages not previously downloaded in your
-RStudio: tximport, biomaRt, GenomicFeatures, AnnotationDbi.
-
-To solve this, run the following code to download these packages first,
-then re-install ***AbunRNA***.
-
-``` r
-if (! requireNamespace("BiocManager", quietly = TRUE)) {
-  install.packages("BiocManager")
-}
-
-if (! requireNamespace("tximport", quietly = TRUE)) {
-  BiocManager::install("tximport")
-}
-
-if (! requireNamespace("biomaRt", quietly = TRUE)) {
-  BiocManager::install("biomaRt")
-}
-
-if (! requireNamespace("GenomicFeatures", quietly = TRUE)) {
-  BiocManager::install("GenomicFeatures")
-}
-
-if (! requireNamespace("AnnotationDbi", quietly = TRUE)) {
-  BiocManager::install("AnnotationDbi")
-}
-```
-
 ## Overview
 
 ``` r
