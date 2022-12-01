@@ -7,24 +7,24 @@
 \format{
 A data frame with 21390 rows and 18 variables.
 \describe{
-\item{cg_1}{gain of function sequence sample}
-\item{cg_2}{gain of function sequence sample}
-\item{cg_3}{gain of function sequence sample}
-\item{sg_1}{gain of function sequence sample}
-\item{sg_2}{gain of function sequence sample}
-\item{sg_3}{gain of function sequence sample}
-\item{cl_1}{loss of function sequence sample}
-\item{cl_2}{loss of function sequence sample}
-\item{cl_3}{loss of function sequence sample}
-\item{sl_1}{loss of function sequence sample}
-\item{sl_2}{loss of function sequence sample}
-\item{sl_3}{loss of function sequence sample}
-\item{cw_1}{wild type sequence sample}
-\item{cw_2}{wild type sequence sample}
-\item{cw_3}{wild type sequence sample}
-\item{sw_1}{wild type sequence sample}
-\item{sw_2}{wild type sequence sample}
-\item{sw_3}{wild type sequence sample}
+\item{cg1}{gain of function sequence sample}
+\item{cg2}{gain of function sequence sample}
+\item{cg3}{gain of function sequence sample}
+\item{sg1}{gain of function sequence sample}
+\item{sg2}{gain of function sequence sample}
+\item{sg3}{gain of function sequence sample}
+\item{cl1}{loss of function sequence sample}
+\item{cl2}{loss of function sequence sample}
+\item{cl3}{loss of function sequence sample}
+\item{sl1}{loss of function sequence sample}
+\item{sl2}{loss of function sequence sample}
+\item{sl3}{loss of function sequence sample}
+\item{cw1}{wild type sequence sample}
+\item{cw2}{wild type sequence sample}
+\item{cw3}{wild type sequence sample}
+\item{sw1}{wild type sequence sample}
+\item{sw2}{wild type sequence sample}
+\item{sw3}{wild type sequence sample}
 }
 }
 \source{
