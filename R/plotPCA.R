@@ -59,7 +59,10 @@
 #'
 #' @export
 #' @importFrom stats prcomp
+#' @importFrom stats hclust
 #' @importFrom ggplot2 autoplot
+#' @importFrom ggplot2 geom_point
+#' @importFrom ggplot2 aes
 #' @importFrom ggplot2 geom_point
 #' @import ggfortify
 
@@ -116,7 +119,7 @@ plotPCA <- function(matrix = NULL, scaleIt = TRUE,
         transpose$Conditions <- as.factor(groups)
 
         plot <- ggplot2::autoplot(pca, data = transpose,x = x, y = y) +
-            ggplot2::geom_point(aes(color = groups))
+            ggplot2::geom_point(ggplot2::aes(color = groups))
     }
 
     return(list("PCA" = pcaR, "Plot" = plot))

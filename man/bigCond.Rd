@@ -7,9 +7,9 @@
 \format{
 A data frame with 18 rows and 2 variables.
 \describe{
-\item{lf}{gain of function genotype}
-\item{cl_x/sl_x}{loss of function genotype}
-\item{cw_x/sw_x}{wild type genotype}
+\item{genotype}{Genotypes of each sample sequence. "wt" is wild type,
+"lf" is loss of function, "gf" is gain of function}
+\item{samples}{Sample sequences}
 }
 }
 \source{

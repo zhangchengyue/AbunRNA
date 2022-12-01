@@ -8,9 +8,9 @@
 #'
 #' @format A data frame with 18 rows and 2 variables.
 #' \describe{
-#'    \item{lf}{gain of function genotype}
-#'    \item{cl_x/sl_x}{loss of function genotype}
-#'    \item{cw_x/sw_x}{wild type genotype}
+#'    \item{genotype}{Genotypes of each sample sequence. "wt" is wild type,
+#'    "lf" is loss of function, "gf" is gain of function}
+#'    \item{samples}{Sample sequences}
 #' }
 #'
 #' @examples
@@ -28,9 +28,24 @@
 #'
 #' @format A data frame with 21390 rows and 18 variables.
 #' \describe{
-#'    \item{cg_x/sg_x}{gain of function sequences}
-#'    \item{cl_x/sl_x}{loss of function sequences}
-#'    \item{cw_x/sw_x}{wild type sequences}
+#'    \item{cg_1}{gain of function sequence sample}
+#'    \item{cg_2}{gain of function sequence sample}
+#'    \item{cg_3}{gain of function sequence sample}
+#'    \item{sg_1}{gain of function sequence sample}
+#'    \item{sg_2}{gain of function sequence sample}
+#'    \item{sg_3}{gain of function sequence sample}
+#'    \item{cl_1}{loss of function sequence sample}
+#'    \item{cl_2}{loss of function sequence sample}
+#'    \item{cl_3}{loss of function sequence sample}
+#'    \item{sl_1}{loss of function sequence sample}
+#'    \item{sl_2}{loss of function sequence sample}
+#'    \item{sl_3}{loss of function sequence sample}
+#'    \item{cw_1}{wild type sequence sample}
+#'    \item{cw_2}{wild type sequence sample}
+#'    \item{cw_3}{wild type sequence sample}
+#'    \item{sw_1}{wild type sequence sample}
+#'    \item{sw_2}{wild type sequence sample}
+#'    \item{sw_3}{wild type sequence sample}
 #' }
 #'
 #' @examples
