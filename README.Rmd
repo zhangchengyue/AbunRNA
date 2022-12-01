@@ -63,6 +63,10 @@ if (! requireNamespace("AnnotationDbi", quietly = TRUE)) {
   BiocManager::install("AnnotationDbi")
 }
 
+if (! requireNamespace("ggfortify", quietly = TRUE)) {
+  install.packages("ggfortify")
+}
+
 ```
 
 ## Overview

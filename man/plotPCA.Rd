@@ -62,6 +62,7 @@ countMatrix <- generateMatrix(sfSeq = sfSe,
                       release = 107,
                       sampleNames = samples,
                       outputCSV = FALSE)
+library("ggfortify")
 graphPlot <- plotPCA(matrix = countMatrix, scaleIt = TRUE,
                      conditions = conditionsDF,
                      col = "genotype")
