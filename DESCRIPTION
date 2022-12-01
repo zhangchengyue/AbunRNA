@@ -21,6 +21,7 @@ Imports:
     GenomicFeatures,
     biomaRt,
     ggplot2,
+    ggfortify,
     pheatmap,
     rstudioapi,
     rvest,

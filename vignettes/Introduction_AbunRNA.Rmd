@@ -157,18 +157,26 @@ quantification(species = "Caenorhabditis Elegans",
 
 ### plotPCA
 performs principle component analysis on input matrix, and plot the graph to cluster among samples. If a condition matrix is provided indicating samples' genotype (i.e. wild type, gain of function, loss of function), the matrix would be used to color each sample dots based on their genotype for better visualization of the results. The `x` and `y` parameters indicates the two variables. If `x = 1` and `y = 2`, then PC1 would be the x variable and PC2 would be the y variable. More information could be viewed in `?plotPCA`.
+
+For better illustration of the PCA plot, we will use a larger count matrix, which contains 18 samples.
+```
+View(head(AbunRNA::abunMatrix))
+
+```
+And the condition matrix that will be used to label samples with different colors based on their conditions: wild type, loss of function genotype, or gain of function genotype.
+
 ```
 # This is the condition matrix that will be used
-View(conditionsDF)
-graphPlot <- plotPCA(mat = AbunRNA::countMatrix, scale = TRUE,
-                     conditions = AbunRNA::conditionsDF,
+View(AbunRNA::bigCond)
+library("ggfortify")
+graphPlot <- plotPCA(mat = AbunRNA::abunMatrix, scale = TRUE,
+                     conditions = AbunRNA::bigCond,
                      col = "genotype", x = 1, y = 2)
 graphPlot$PCA
 graphPlot$Plot
 ```
 The `PCA` return value is the results of principle component analysis, and the `plot` return value is the PCA plot showing clusters of samples based on their similarity. 
 
-With limitation of system file size, only three samples are used to illustrate the usage, thus it cannot form any clusters on the plot. However, from the graph, we can still see the difference between wild type and mutants. In real research, with large sample size, performing PCA and plotting the graph would give more information on the expression abundance among wild type and mutants.
 
 <div style="text-align:center"><img src="pca.png" alt="pca" width="450" height="300"/></div>
 

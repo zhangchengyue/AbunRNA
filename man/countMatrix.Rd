@@ -3,7 +3,7 @@
 \docType{data}
 \name{countMatrix}
 \alias{countMatrix}
-\title{Expression Abundance Matrix From C.elegans Quantification Result}
+\title{Small Sample Size Expression Abundance Matrix From C.elegans Quantification Result}
 \format{
 A data frame with 21390 rows and 3 variables:
 \describe{
@@ -20,6 +20,7 @@ countMatrix
 }
 \description{
 An RNAseq experiment conducted using C.elegans from 2021-2022 in Canada.
+Only 3 samples are included.
 }
 \examples{
 \dontrun{

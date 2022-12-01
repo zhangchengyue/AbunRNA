@@ -3,7 +3,7 @@
 \docType{data}
 \name{conditionsDF}
 \alias{conditionsDF}
-\title{Genotypes for C.elegans samples}
+\title{Genotypes for C.elegans small samples}
 \format{
 A data frame with 3 rows and 1 variable:
 \describe{

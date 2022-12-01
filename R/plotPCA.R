@@ -41,6 +41,7 @@
 #'                       release = 107,
 #'                       sampleNames = samples,
 #'                       outputCSV = FALSE)
+#' library("ggfortify")
 #' graphPlot <- plotPCA(matrix = countMatrix, scaleIt = TRUE,
 #'                      conditions = conditionsDF,
 #'                      col = "genotype")
@@ -57,8 +58,10 @@
 #' \href{http://www.R-project.org/}{Link}
 #'
 #' @export
-#' @importFrom stats hclust
-#' @importFrom ggplot2 ggplot
+#' @importFrom stats prcomp
+#' @importFrom ggplot2 autoplot
+#' @importFrom ggplot2 geom_point
+#' @import ggfortify
 
 plotPCA <- function(matrix = NULL, scaleIt = TRUE,
                     conditions = NULL, col = NA, x = 1, y = 2) {
