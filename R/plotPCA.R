@@ -69,7 +69,31 @@ plotPCA <- function(matrix = NULL, scaleIt = TRUE,
         ;
     }
 
-    pca <- stats::prcomp(x = matrix, scale = scaleIt)
+    if (x == y){
+        stop("x and y variables cannot be identical.")
+    } else {
+        ;
+    }
+
+    if (is.na(col) && (!is.null(conditions))) {
+        stop("col argument not provided")
+    } else {
+        ;
+    }
+
+    if (! (col %in% colnames(conditions))) {
+        stop("col argument not a column of conditions.")
+    } else {
+        ;
+    }
+
+    transpose <- as.data.frame(t(matrix))
+    rownames(transpose) <- NULL
+
+    # Filter
+    transpose <- transpose[, colSums(transpose) > 0]
+
+    pca <- stats::prcomp(x = transpose, scale = scaleIt)
 
     pcaR <- data.frame(pca$rotation)
     if (! x %in% seq(along = pcaR) || (! y %in% seq(along = pcaR))) {
@@ -78,32 +102,18 @@ plotPCA <- function(matrix = NULL, scaleIt = TRUE,
         ;
     }
 
-    PCx <- pcaR[ , x]
-    PCy <- pcaR[ , y]
 
     if (is.null(conditions)) {
         cat("Conditions not provided. Data would not be categorized.")
-        plot <- ggplot2::ggplot(pcaR,
-                                ggplot2::aes(x = PCx, y = PCy)) +
-            ggplot2::geom_point(size = 5, shape = 21, col = "black")
+        plot <- ggplot2::autoplot(pca, x = x, y = y)
+
     } else {
-        if (is.na(col)) {
-            stop("col argument not provided")
-        } else {
-            ;
-        }
 
-        if (! (col %in% colnames(conditions))) {
-            stop("col argument not a column of conditions.")
-        } else {
-            ;
-        }
+        groups <- conditions[ , colnames(conditions) == col]
+        transpose$Conditions <- as.factor(groups)
 
-        Groups <- conditions[ , colnames(conditions) == col]
-
-        plot <- ggplot2::ggplot(pcaR,
-                                ggplot2::aes(x = PCx, y = PCy, fill = Groups)) +
-            ggplot2::geom_point(size = 5, shape = 21, col = "black")
+        plot <- ggplot2::autoplot(pca, data = transpose,x = x, y = y) +
+            ggplot2::geom_point(aes(color = groups))
     }
 
     return(list("PCA" = pcaR, "Plot" = plot))

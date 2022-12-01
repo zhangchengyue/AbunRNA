@@ -10,7 +10,7 @@ test_that("Check for input matrix", {
 #> Test passed :)
 
 
-testthat::test_that("Check for valid input arguments", {
+test_that("Check for valid input arguments", {
 
     cw1Quants <- system.file("extdata",
                              "cw1_quants",
@@ -35,10 +35,16 @@ testthat::test_that("Check for valid input arguments", {
                                   heatmap = FALSE,
                                   outputCSV = FALSE)
 
+    conditionsDF <- data.frame(samples = c("WT_WC_1",
+                                           "lf_WC_1",
+                                           "gf_WC_1"),
+                               genotype = c("wild type",
+                                            "loss of function",
+                                            "gain of function"))
 
     expect_error(plotPCA(matrix = countMatrix, scaleIt = TRUE,
                          conditions = conditionsDF,
-                         col = "genotype", x = 100, y = 100),
+                         col = "genotype", x = 1, y = 100),
                  "Invalid x and y variables")
 
     expect_error(plotPCA(matrix = countMatrix, scaleIt = TRUE,
@@ -49,6 +55,11 @@ testthat::test_that("Check for valid input arguments", {
                          conditions = conditionsDF,
                          col = "notexists", x = 1, y = 2),
                  "col argument not a column of conditions.")
+
+    expect_error(plotPCA(matrix = countMatrix, scaleIt = TRUE,
+                         conditions = conditionsDF,
+                         col = "genotype", x = 2, y = 2),
+                 "x and y variables cannot be identical.")
 })
 
 #> Test passed :)

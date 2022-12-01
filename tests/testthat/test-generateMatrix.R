@@ -1,5 +1,5 @@
 library(AbunRNA)
-
+library(testthat)
 test_that("Quantification files not valid", {
     expect_error(generateMatrix(sfSeq = 123,
                                 refTrp = NA,
