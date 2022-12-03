@@ -1,4 +1,4 @@
-#' Generate a count matrix and Plot heatmap
+#' Generate a count matrix
 #'
 #' A function that process the input salmon output .sf files, extract genes from
 #' the provided gene annotation of the species, and generate a count
@@ -25,7 +25,7 @@
 #' @param abunCSV A character string indicating the basename of the output CSV.
 #'     The default output file name is "abunCSV".
 #' @param heatmap A boolean indicating whether to plot the heat map. The default
-#'     value is TRUE.
+#'     value is FALSE.
 #' @param head A boolean indicating whether to use only the first 6 lines of
 #'     the count matrix. This is useful to view as an example when the matrix is
 #'     large. The default value is TRUE.
@@ -91,7 +91,6 @@
 #' @import utils
 #' @importFrom stats na.omit
 #' @importFrom tibble column_to_rownames
-#' @importFrom pheatmap pheatmap
 #' @importFrom tximport tximport
 #' @importFrom biomaRt keys
 #' @importFrom biomaRt keytypes
@@ -112,7 +111,7 @@ generateMatrix <- function(sfSeq = NA,
                            release = NA,
                            outputCSV = FALSE,
                            abunCSV = "abunCSV",
-                           heatmap = T,
+                           heatmap = F,
                            head = T) {
 
     if (typeof(sfSeq) != "character") {
@@ -186,23 +185,58 @@ generateMatrix <- function(sfSeq = NA,
     formatted <- tibble::column_to_rownames(matrix, "Gene ID")
 
     if (heatmap == T) {
-        if (head == T) {
+        plotHeatMap(matrix = formatted, head = head)
+    }
 
-            (plot <- head(formatted))
-            pheatmap::pheatmap(mat = plot,
-                               display_numbers = T,
-                               number_color = "black",
-                               hclustfun = hclust)
-        } else {
-            plot <- formatted
-        }
+    return(formatted)
+}
 
+
+
+
+
+#' Plot abundance heatmap
+#'
+#' Plot a heatmap to visualize the transcript abundance among wild type and
+#' mutant samples.
+#'
+#' @param matrix A count matrix. Default is NULL.
+#' @param head A boolean indicating whether to plot only the first 6 genes in
+#' the count matrix, or plot all.
+#'
+#' @return A heatmap of the count matrix.
+#'
+#' @examples
+#' plotHeatMap(AbunRNA::abunMatrix)
+#'
+#' @export
+#' @importFrom pheatmap pheatmap
+#'
+#' @references
+#'  Raivo Kolde \href{https://CRAN.R-project.org/package=pheatmap}{Link}
+#'
+
+plotHeatMap <- function(matrix = NULL, head = T){
+
+    if (is.null(matrix)) {
+        stop("Matrix not provided.")
+    }
+
+
+    if (head == T) {
+
+        (plot <- head(matrix))
         pheatmap::pheatmap(mat = plot,
-                           display_numbers = F,
                            number_color = "black",
                            hclustfun = hclust)
+    } else {
+        plot <- matrix
     }
-    return(formatted)
+
+    result <- pheatmap::pheatmap(mat = plot,
+                       number_color = "black",
+                       hclustfun = hclust)
+    return(result)
 }
 
 # [END]

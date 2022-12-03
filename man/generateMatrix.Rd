@@ -2,7 +2,7 @@
 % Please edit documentation in R/generateMatrix.R
 \name{generateMatrix}
 \alias{generateMatrix}
-\title{Generate a count matrix and Plot heatmap}
+\title{Generate a count matrix}
 \usage{
 generateMatrix(
   sfSeq = NA,
@@ -14,7 +14,7 @@ generateMatrix(
   release = NA,
   outputCSV = FALSE,
   abunCSV = "abunCSV",
-  heatmap = T,
+  heatmap = F,
   head = T
 )
 }
@@ -47,7 +47,7 @@ The default value is FALSE.}
 The default output file name is "abunCSV".}
 
 \item{heatmap}{A boolean indicating whether to plot the heat map. The default
-value is TRUE.}
+value is FALSE.}
 
 \item{head}{A boolean indicating whether to use only the first 6 lines of
 the count matrix. This is useful to view as an example when the matrix is
