@@ -1,6 +1,6 @@
 #' Launch Shiny App for AbunRNA
 #'
-#' A function that launches the Shiny app for AbunRNA。
+#' A function that launches the Shiny app for AbunRNA.
 #' The shiny app permits to generate count matrix, plot heatmap and
 #' generate PCA plot.
 #'
