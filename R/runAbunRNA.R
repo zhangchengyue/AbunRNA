@@ -19,7 +19,7 @@
 #' @export
 #' @importFrom shiny runApp
 
-runIntegrationScore <- function() {
+runAbunRNA <- function() {
     appDir <- system.file("shiny-scripts",
                           package = "AbunRNA")
     shiny::runApp(appDir, display.mode = "normal")

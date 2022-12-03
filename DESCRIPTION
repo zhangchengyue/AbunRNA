@@ -28,7 +28,8 @@ Imports:
     stats,
     stringr,
     tibble,
-    tximport
+    tximport，
+    shiny
 RoxygenNote: 7.2.2
 Roxygen: list(markdown = TRUE)
 Suggests: 
