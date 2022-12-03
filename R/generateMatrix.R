@@ -198,7 +198,7 @@ generateMatrix <- function(sfSeq = NA,
         }
 
         pheatmap::pheatmap(mat = plot,
-                           display_numbers = T,
+                           display_numbers = F,
                            number_color = "black",
                            hclustfun = hclust)
     }
