@@ -163,20 +163,20 @@ generateMatrix <- function(sfSeq = NA,
     abunAnnot <- data.frame(abundance)
 
 
-    if (is.na(sampleNames)) {
+    if (all(is.na(sampleNames))) {
         totalCol <- ncol(abunAnnot)
         sampleNames <- c()
         for (i in seq(totalCol) - 1) {
             sampleNames[i] <- paste0("sample", i)
         }
+
     }
 
-    else if (length(sampleNames) != ncol(abunAnnot)) {
-        stop("Unequal number of sample names as columns in the matrix.")
-    }
-    else {
-        ;
-    }
+    # else {
+    #     if (length(sampleNames) != ncol(abunAnnot)) {
+    #         stop("Unequal number of sample names as columns in the matrix.")
+    #     }
+    # }
 
 
     colnames(abunAnnot) <- c("Gene ID", sampleNames)

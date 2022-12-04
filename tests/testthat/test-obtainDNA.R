@@ -1,5 +1,5 @@
 library(AbunRNA)
-
+library(testthat)
 test_that("Extracts the correct DNA gz file for C.elegans, version 107", {
     file <- obtainDNA(species = "Caenorhabditis Elegans",
                        wantedVersion=107,
