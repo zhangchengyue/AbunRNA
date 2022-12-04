@@ -11,7 +11,8 @@
 #' @param refTrp A string indicating the path to the reference
 #'     transcriptome file. The default value is NA.
 #' @param sampleNames A character vector indicating sample names of the raw
-#'     sequences. The default value is NA.
+#'     sequences. The default value is NA, and would automatically generate
+#'     sample names if no specific names provided.
 #' @param type A string indicating the tool used for generating transcript
 #'     expression abundance from raw sequence. The default tool is salmon.
 #' @param keytype A stirng indicating the keytype to be used. Default
@@ -19,7 +20,7 @@
 #' @param species A string indicating the specific name of the species to get
 #'     reference transcriptome. The default value is NA.
 #' @param release A string indicating the release version of the reference.
-#'     Default is the current release. The default value is NA.
+#'     Default is the current release. The default value is empty string.
 #' @param outputCSV A boolean indicating whether to output the matrix as CSV.
 #'     The default value is FALSE.
 #' @param abunCSV A character string indicating the basename of the output CSV.
@@ -108,7 +109,7 @@ generateMatrix <- function(sfSeq = NA,
                            type = "salmon",
                            keytype = "TXNAME",
                            species = NA,
-                           release = NA,
+                           release = "",
                            outputCSV = FALSE,
                            abunCSV = "abunCSV",
                            heatmap = F,
@@ -131,7 +132,7 @@ generateMatrix <- function(sfSeq = NA,
             stop("No valid reference transcriptome file or species provided.")
         }
 
-        if (is.na(release)) {
+        if (nchar(release) == 0) {
             refTrp <- obtainGTF(species = species, download = T)
         } else {
             refTrp <- obtainGTF(species = species, wantedVersion = release,
@@ -160,6 +161,23 @@ generateMatrix <- function(sfSeq = NA,
     abundance <- read.csv(abunFile)
 
     abunAnnot <- data.frame(abundance)
+
+
+    if (is.na(sampleNames)) {
+        totalCol <- ncol(abunAnnot)
+        sampleNames <- c()
+        for (i in seq(totalCol) - 1) {
+            sampleNames[i] <- paste0("sample", i)
+        }
+    }
+
+    else if (length(sampleNames) != ncol(abunAnnot)) {
+        stop("Unequal number of sample names as columns in the matrix.")
+    }
+    else {
+        ;
+    }
+
 
     colnames(abunAnnot) <- c("Gene ID", sampleNames)
 

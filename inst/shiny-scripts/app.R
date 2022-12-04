@@ -1,36 +1,69 @@
 library(shiny)
+library(shinydashboard)
+library(shinyjs)
+library(ggfortify)
+library(dplyr)
 
 
-load("abunMatrix.rda")
-load("countMatrix.rda")
-load("bigCond.rda")
-load("conditionsDF.rda")
-
-
-# Define UI for random distribution app ----
 ui <- fluidPage(
 
     # App title ----
     titlePanel("AbunRNA"),
 
-    # Sidebar layout with input and output definitions ----
     sidebarLayout(
-
-        # Sidebar panel for inputs ----
         sidebarPanel(
-
+            useShinyjs(),
+            box(id = "generate", width = "800px",
+                title = "Demo or Run?",
+                selectInput(inputId = "generate",
+                label = "Would you like to play with our demo or generate your
+                own matrix by uploading quantification files?",
+                choices = c("Demo", "Upload files")
+                )
+            ),
 
             # Input: Selector for choosing dataset ----
-            selectInput(inputId = "dataset",
-                        label = "Choose a dataset:",
-                        choices = c("C.elegans twk-40 3 samples",
-                                    "C.elegans twk-40 18 samples")),
+            box(id = "demo", width = "800px",
+                selectInput(inputId = "dataset",
+                            label = "Choose a dataset:",
+                            choices = c("C.elegans twk-40 3 samples",
+                                        "C.elegans twk-40 18 samples"))
+            ),
+
+            box(id = "ownMatrix", width = "800px",
+                fileInput(
+                    inputId = "files",
+                    label = "Choose Quantification Files",
+                    multiple = TRUE),
+
+                textInput(inputId = "species",
+                          label = "Type in reference transcriptom organism.
+                      e.g. Caenorhabditis elegans", value = "", width = NULL,
+                          placeholder = NULL),
+
+                box(id = "check",
+                    width = "800px",
+                    title = "Release Version",
+                    selectInput(inputId = "check",
+                    label = "Do you have specific version preference on the
+                    reference transcriptom?",
+                    choices = c(FALSE, TRUE))
+                ),
+
+                box(id = "release",
+                    width = 80,
+                    textInput(inputId = "release",
+                              label = "Type in the release version below.
+                          e.g. 107",
+                              value = "")
+                ),
+                actionButton("go", "Run")
+            ),
 
             # Input: Numeric entry for number of obs to view ----
             numericInput(inputId = "obs",
                          label = "Number of observations to view:",
                          value = 10)
-
         ),
 
         mainPanel(
@@ -50,61 +83,173 @@ ui <- fluidPage(
 
 server <- function(input, output) {
 
-    # data(abunMatrix)
-    # data(countMatrix)
-    # data(bigCond)
-    # data(conditionsDF)
-
-    datasetInput <- reactive({
-        switch(input$dataset,
-               "C.elegans twk-40 3 samples" = countMatrix,
-               "C.elegans twk-40 18 samples" = abunMatrix)
-    })
-
-    output$view <- renderTable({
-        head(datasetInput(), n = input$obs)
-    })
 
 
-    countHeat <- plotHeatMap(matrix = countMatrix, head = T)
-
-    abunHeat <- plotHeatMap(matrix = abunMatrix, head = T)
-
-    heatInput <- reactive({
-        switch(input$dataset,
-               "C.elegans twk-40 3 samples" = countHeat,
-               "C.elegans twk-40 18 samples" = abunHeat)
-    })
 
 
-    output$heatmap <- renderPlot({
-        heatInput()
-    })
+
+    observeEvent(input$generate, {
+
+        if (input$generate == "Demo") {
+            shinyjs::hide(id = "ownMatrix")
+            shinyjs::show(id = "demo")
+
+            parentPath <- dirname(dirname(getwd()))
+            load(paste0(parentPath, "/data/abunMatrix.rda"))
+            load(paste0(parentPath, "/data/countMatrix.rda"))
+            load(paste0(parentPath, "/data/bigCond.rda"))
+            load(paste0(parentPath, "/data/conditionsDF.rda"))
+
+            datasetInput <- reactive({
+                switch(input$dataset,
+                       "C.elegans twk-40 3 samples" = countMatrix,
+                       "C.elegans twk-40 18 samples" = abunMatrix)
+            })
+
+            output$view <- renderTable({
+                head(datasetInput(), n = input$obs)
+            })
 
 
-    countPlot <- plotPCA(matrix = countMatrix, scaleIt = TRUE,
-                         conditions = conditionsDF,
-                         col = "genotype")
+            countHeat <- plotHeatMap(matrix = countMatrix, head = T)
 
-    abunPlot <- plotPCA(matrix = abunMatrix, scaleIt = TRUE,
-                        conditions = bigCond,
-                        col = "genotype")
+            abunHeat <- plotHeatMap(matrix = abunMatrix, head = T)
 
-    pcaInput <- reactive({
-        switch(input$dataset,
-               "C.elegans twk-40 3 samples" = countPlot,
-               "C.elegans twk-40 18 samples" = abunPlot)
-    })
+            heatInput <- reactive({
+                switch(input$dataset,
+                       "C.elegans twk-40 3 samples" = countHeat,
+                       "C.elegans twk-40 18 samples" = abunHeat)
+            })
 
 
-    output$pcaplot <- renderPlot({
-        pcaInput()$Plot
-    })
+            output$heatmap <- renderPlot({
+                heatInput()
+            })
 
-    output$pca <- renderTable({
-        head(pcaInput()$PCA, n = input$obs)
+
+            countPlot <- plotPCA(matrix = countMatrix, scaleIt = TRUE,
+                                 conditions = conditionsDF,
+                                 col = "genotype")
+
+            abunPlot <- plotPCA(matrix = abunMatrix, scaleIt = TRUE,
+                                conditions = bigCond,
+                                col = "genotype")
+
+            pcaInput <- reactive({
+                switch(input$dataset,
+                       "C.elegans twk-40 3 samples" = countPlot,
+                       "C.elegans twk-40 18 samples" = abunPlot)
+            })
+
+
+            output$pcaplot <- renderPlot({
+                pcaInput()$Plot
+            })
+
+            output$pca <- renderTable({
+                head(pcaInput()$PCA, n = input$obs)
+            })
+        }
+
+        else {
+            shinyjs::show(id = "ownMatrix")
+            shinyjs::hide(id = "demo")
+
+            output$view <- renderTable(NULL)
+            output$heatmap <- renderPlot(NULL)
+            output$pca <- renderTable(NULL)
+            output$pcaplot <- renderTable(NULL)
+
+            matrix <- data.frame()
+
+
+            observeEvent(input$files, {
+                print(input$files %>% dplyr::arrange(desc(size)))
+            })
+
+            observeEvent(input$check, {
+
+                if (input$check == TRUE) {
+                    shinyjs::show(id = "release")
+                }
+                else {
+                    shinyjs::hide(id = "release")
+                }
+            })
+
+
+
+            # Testing the following
+
+
+            getMatrix <- eventReactive(input$go, {
+
+                upload <- c()
+
+                for(nr in seq_along(input$files)) {
+                    upload[nr] <- input$files[[nr, 'datapath']]
+                }
+
+                matrix <- data.frame()
+                if (length(upload) != 0) {
+
+                    matrix <- generateMatrix(sfSeq = upload,
+                                             species = input$species,
+                                             release = input$release)
+
+                } else {
+                    ;
+                }
+
+                return(matrix)
+            })
+
+
+            getHeatmap <- eventReactive(input$go, {
+
+                if (length(getMatrix()) != 0) {
+                    heatMap <- plotHeatMap(matrix = getMatrix(), head = T)
+                }
+                else {
+                    ;
+                }
+                return(heatmap)
+            })
+
+
+            getPCA <- eventReactive(input$go, {
+
+                if (length(getMatrix()) != 0) {
+                    pcaResult <- plotPCA(matrix = getMatrix(), scaleIt = TRUE)
+                }
+                else {
+                    ;
+                }
+                return(pcaResult)
+            })
+
+
+            output$view <- renderTable({
+                head(getMatrix(), n = input$obs)
+                # head(analysis())
+            })
+
+            output$heatmap <- renderPlot({
+                getHeatmap()
+            })
+
+            output$pcaplot <- renderPlot({
+                getPCA()$Plot
+            })
+
+            output$pca <- renderTable({
+                head(getPCA()$PCA, n = input$obs)
+            })
+
+
+        }
     })
 
 }
 
-shinyApp(ui = ui, server = server)
+shinyApp(ui, server)

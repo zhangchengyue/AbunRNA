@@ -87,12 +87,6 @@ plotPCA <- function(matrix = NULL, scaleIt = TRUE,
         ;
     }
 
-    if (! (col %in% colnames(conditions))) {
-        stop("col argument not a column of conditions.")
-    } else {
-        ;
-    }
-
     transpose <- as.data.frame(t(matrix))
     rownames(transpose) <- NULL
 
@@ -114,6 +108,12 @@ plotPCA <- function(matrix = NULL, scaleIt = TRUE,
         plot <- ggplot2::autoplot(pca, x = x, y = y)
 
     } else {
+
+        if (! (col %in% colnames(conditions))) {
+            stop("col argument not a column of conditions.")
+        } else {
+            ;
+        }
 
         groups <- conditions[ , colnames(conditions) == col]
         transpose$Conditions <- as.factor(groups)

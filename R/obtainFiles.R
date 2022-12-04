@@ -8,7 +8,7 @@
 #' @param species A string indicating the specific name of the species.
 #'     The default value is NA.
 #' @param wantedVersion A double indicating the version of Ensembl archive.
-#'     The default value is NA.
+#'     The default value is empty string.
 #' @param download A boolean indicating whether to download the file or not.
 #'     The default value is FALSE.
 #'
@@ -43,7 +43,7 @@
 #' @importFrom biomaRt listEnsemblArchives
 
 
-obtainCDNA <- function(species = NA, wantedVersion = NA, download = F) {
+obtainCDNA <- function(species = NA, wantedVersion = "", download = F) {
 
     if (is.na(species)) {
         stop("Species name not provided.")
@@ -108,7 +108,7 @@ obtainCDNA <- function(species = NA, wantedVersion = NA, download = F) {
 #' @param species A string indicating the specific name of the species.
 #'     The default value is NA.
 #' @param wantedVersion A double indicating the version of Ensembl archive.
-#'     The default value is NA.
+#'     The default value is empty string.
 #' @param download A boolean indicating whether to download the file or not.
 #'     The default value is FALSE.
 #'
@@ -142,7 +142,7 @@ obtainCDNA <- function(species = NA, wantedVersion = NA, download = F) {
 #' @importFrom biomaRt listEnsemblArchives
 
 
-obtainDNA <- function(species = NA, wantedVersion = NA, download = F) {
+obtainDNA <- function(species = NA, wantedVersion = "", download = F) {
     if (is.na(species)) {
         stop("Species name not provided.")
     } else {
@@ -153,7 +153,7 @@ obtainDNA <- function(species = NA, wantedVersion = NA, download = F) {
 
     species <- gsub(" ", "_", species)
 
-    if (is.na(wantedVersion)) {
+    if (nchar(wantedVersion) == 0) {
         # Obtain latest version
         ensemblArchives <- biomaRt::listEnsemblArchives()
         versions <- ensemblArchives$version
@@ -207,7 +207,7 @@ obtainDNA <- function(species = NA, wantedVersion = NA, download = F) {
 #' @param species A string indicating the specific name of the species to get
 #'     reference transcriptome. The default value is NA.
 #' @param wantedVersion A double indicating the version of Ensembl archive.
-#'     The default value is NA.
+#'     The default value is empty string.
 #' @param download A boolean indicating whether to download the file or not.
 #'     The default value is FALSE.
 #'
@@ -241,7 +241,7 @@ obtainDNA <- function(species = NA, wantedVersion = NA, download = F) {
 #' @importFrom utils download.file
 #' @importFrom biomaRt listEnsemblArchives
 
-obtainGTF <- function(species = NA, wantedVersion = NA, download = F) {
+obtainGTF <- function(species = NA, wantedVersion = "", download = F) {
     if (is.na(species)) {
         stop("Species name not provided.")
     } else {
@@ -253,7 +253,7 @@ obtainGTF <- function(species = NA, wantedVersion = NA, download = F) {
 
     species <- gsub(" ", "_", species)
 
-    if (is.na(wantedVersion)) {
+    if (nchar(wantedVersion) == 0) {
         # Obtain latest version
         ensemblArchives <- biomaRt::listEnsemblArchives()
         versions <- ensemblArchives$version
@@ -271,6 +271,8 @@ obtainGTF <- function(species = NA, wantedVersion = NA, download = F) {
 
     code <- tryCatch({gtfFile <- rvest::read_html(url)},
                      error = function(e) {return(1)})
+
+
     if (typeof(code) == "double") {
         stop("Species name cannot be recognized. Please try again.")
     } else {
