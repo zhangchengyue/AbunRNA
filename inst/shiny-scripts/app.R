@@ -1,6 +1,12 @@
 library(shiny)
 
 
+# load("abunMatrix.rda")
+# load("countMatrix.rda")
+# load("bigCond.rda")
+# load("conditionsDF.rda")
+
+
 # Define UI for random distribution app ----
 ui <- fluidPage(
 
@@ -27,10 +33,8 @@ ui <- fluidPage(
 
         ),
 
-        # Main panel for displaying outputs ----
         mainPanel(
 
-            # Output: Tabset w/ plot, summary, and table ----
             tabsetPanel(type = "tabs",
                         tabPanel("Data Set", tableOutput("view")),
                         tabPanel("Heatmap", plotOutput("heatmap")),
@@ -43,7 +47,7 @@ ui <- fluidPage(
 )
 
 
-# Define server logic for random distribution app ----
+
 server <- function(input, output) {
 
     data(abunMatrix)
@@ -51,14 +55,12 @@ server <- function(input, output) {
     data(bigCond)
     data(conditionsDF)
 
-
     datasetInput <- reactive({
         switch(input$dataset,
                "C.elegans twk-40 3 samples" = countMatrix,
                "C.elegans twk-40 18 samples" = abunMatrix)
     })
 
-    # Show the first "n" observations ----
     output$view <- renderTable({
         head(datasetInput(), n = input$obs)
     })

@@ -32,7 +32,11 @@ devtools::install_github("zhangchengyue/AbunRNA", build_vignettes = TRUE)
 library("AbunRNA")
 ```
 
-To run shinyApp: Under construction
+To run shinyApp:
+
+``` r
+AbunRNA::runAbunRNA()
+```
 
 Sometimes errors about dependencies are showing up, usually that would
 happen for the following packages not previously downloaded in your
@@ -60,6 +64,10 @@ if (! requireNamespace("GenomicFeatures", quietly = TRUE)) {
 
 if (! requireNamespace("AnnotationDbi", quietly = TRUE)) {
   BiocManager::install("AnnotationDbi")
+}
+
+if (! requireNamespace("ggfortify", quietly = TRUE)) {
+  install.packages("ggfortify")
 }
 ```
 
