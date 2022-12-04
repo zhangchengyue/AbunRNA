@@ -201,8 +201,10 @@ generateMatrix <- function(sfSeq = NA,
 #' mutant samples.
 #'
 #' @param matrix A count matrix. Default is NULL.
-#' @param head A boolean indicating whether to plot only the first 6 genes in
-#' the count matrix, or plot all.
+#' @param head A boolean indicating whether to plot only the first 20 genes in
+#' the count matrix. Default setting is TRUE. If set to FALSE, it might take
+#' a long time to generate the plot if there are a huge number of genes in the
+#' dataset.
 #'
 #' @return A heatmap of the count matrix.
 #'
@@ -225,7 +227,7 @@ plotHeatMap <- function(matrix = NULL, head = T){
 
     if (head == T) {
 
-        (plot <- head(matrix))
+        (plot <- matrix[1:20, ])
         pheatmap::pheatmap(mat = plot,
                            number_color = "black",
                            hclustfun = hclust)

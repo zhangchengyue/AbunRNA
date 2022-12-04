@@ -1,10 +1,10 @@
 library(shiny)
 
 
-# load("abunMatrix.rda")
-# load("countMatrix.rda")
-# load("bigCond.rda")
-# load("conditionsDF.rda")
+load("abunMatrix.rda")
+load("countMatrix.rda")
+load("bigCond.rda")
+load("conditionsDF.rda")
 
 
 # Define UI for random distribution app ----
@@ -50,10 +50,10 @@ ui <- fluidPage(
 
 server <- function(input, output) {
 
-    data(abunMatrix)
-    data(countMatrix)
-    data(bigCond)
-    data(conditionsDF)
+    # data(abunMatrix)
+    # data(countMatrix)
+    # data(bigCond)
+    # data(conditionsDF)
 
     datasetInput <- reactive({
         switch(input$dataset,

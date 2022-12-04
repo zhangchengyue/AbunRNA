@@ -41,7 +41,7 @@
 #'                       release = 107,
 #'                       sampleNames = samples,
 #'                       outputCSV = FALSE)
-#' library("ggfortify")
+#' library("ggfortify") # Load ggfortify for plotting PCA
 #' graphPlot <- plotPCA(matrix = countMatrix, scaleIt = TRUE,
 #'                      conditions = conditionsDF,
 #'                      col = "genotype")
