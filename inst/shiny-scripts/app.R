@@ -16,9 +16,9 @@ ui <- fluidPage(
             box(id = "generate", width = "800px",
                 title = "Demo or Run?",
                 selectInput(inputId = "generate",
-                label = "Would you like to play with our demo or generate your
+                            label = "Would you like to play with our demo or generate your
                 own matrix by uploading quantification files?",
-                choices = c("Demo", "Upload files")
+                            choices = c("Demo", "Upload files")
                 )
             ),
 
@@ -45,9 +45,9 @@ ui <- fluidPage(
                     width = "800px",
                     title = "Release Version",
                     selectInput(inputId = "check",
-                    label = "Do you have specific version preference on the
+                                label = "Do you have specific version preference on the
                     reference transcriptom?",
-                    choices = c(FALSE, TRUE))
+                                choices = c(FALSE, TRUE))
                 ),
 
                 box(id = "release",
@@ -253,3 +253,5 @@ server <- function(input, output) {
 }
 
 shinyApp(ui, server)
+
+# [END]
