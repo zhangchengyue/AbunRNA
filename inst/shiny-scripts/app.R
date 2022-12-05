@@ -16,8 +16,9 @@ ui <- fluidPage(
             box(id = "generate", width = "800px",
                 title = "Demo or Run?",
                 selectInput(inputId = "generate",
-                            label = "Would you like to play with our demo or generate your
-                own matrix by uploading quantification files?",
+                            label = "Would you like to play with our demo or
+                            generate your own matrix by uploading quantification
+                            files?",
                             choices = c("Demo", "Upload files")
                 )
             ),
@@ -45,8 +46,8 @@ ui <- fluidPage(
                     width = "800px",
                     title = "Release Version",
                     selectInput(inputId = "check",
-                                label = "Do you have specific version preference on the
-                    reference transcriptom?",
+                                label = "Do you have specific version preference
+                                on the reference transcriptom?",
                                 choices = c(FALSE, TRUE))
                 ),
 
@@ -82,29 +83,11 @@ ui <- fluidPage(
 
 
 server <- function(input, output) {
-
-
-
-
-
-
     observeEvent(input$generate, {
 
         if (input$generate == "Demo") {
             shinyjs::hide(id = "ownMatrix")
             shinyjs::show(id = "demo")
-
-            # parentPath <- dirname(dirname(getwd()))
-            # load(paste0(parentPath, "/data/abunMatrix.rda"))
-            # load(paste0(parentPath, "/data/countMatrix.rda"))
-            # load(paste0(parentPath, "/data/bigCond.rda"))
-            # load(paste0(parentPath, "/data/conditionsDF.rda"))
-
-            # data("abunMatrix")
-            # data("countMatrix")
-            # data("bigCond")
-            # data("conditionsDF")
-
             countMatrix <- AbunRNA::countMatrix
             abunMatrix <- AbunRNA::abunMatrix
             bigCond <- AbunRNA::bigCond
@@ -122,7 +105,6 @@ server <- function(input, output) {
 
 
             countHeat <- plotHeatMap(matrix = countMatrix, head = T)
-
             abunHeat <- plotHeatMap(matrix = abunMatrix, head = T)
 
             heatInput <- reactive({
@@ -130,17 +112,12 @@ server <- function(input, output) {
                        "C.elegans twk-40 3 samples" = countHeat,
                        "C.elegans twk-40 18 samples" = abunHeat)
             })
-
-
             output$heatmap <- renderPlot({
                 heatInput()
             })
-
-
             countPlot <- plotPCA(matrix = countMatrix, scaleIt = TRUE,
                                  conditions = conditionsDF,
                                  col = "genotype")
-
             abunPlot <- plotPCA(matrix = abunMatrix, scaleIt = TRUE,
                                 conditions = bigCond,
                                 col = "genotype")
@@ -187,11 +164,6 @@ server <- function(input, output) {
                 }
             })
 
-
-
-            # Testing the following
-
-
             getMatrix <- eventReactive(input$go, {
 
                 upload <- c()
@@ -213,7 +185,6 @@ server <- function(input, output) {
 
                 return(matrix)
             })
-
 
             getHeatmap <- eventReactive(input$go, {
 
@@ -237,8 +208,6 @@ server <- function(input, output) {
                 }
                 return(pcaResult)
             })
-
-
             output$view <- renderTable({
                 head(getMatrix(), n = input$obs)
                 # head(analysis())
@@ -256,12 +225,11 @@ server <- function(input, output) {
                 head(getPCA()$PCA, n = input$obs)
             })
 
-
         }
     })
 
 }
 
-shinyApp(ui, server)
+shiny::shinyApp(ui, server)
 
 # [END]
