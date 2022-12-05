@@ -94,11 +94,21 @@ server <- function(input, output) {
             shinyjs::hide(id = "ownMatrix")
             shinyjs::show(id = "demo")
 
-            parentPath <- dirname(dirname(getwd()))
-            load(paste0(parentPath, "/data/abunMatrix.rda"))
-            load(paste0(parentPath, "/data/countMatrix.rda"))
-            load(paste0(parentPath, "/data/bigCond.rda"))
-            load(paste0(parentPath, "/data/conditionsDF.rda"))
+            # parentPath <- dirname(dirname(getwd()))
+            # load(paste0(parentPath, "/data/abunMatrix.rda"))
+            # load(paste0(parentPath, "/data/countMatrix.rda"))
+            # load(paste0(parentPath, "/data/bigCond.rda"))
+            # load(paste0(parentPath, "/data/conditionsDF.rda"))
+
+            # data("abunMatrix")
+            # data("countMatrix")
+            # data("bigCond")
+            # data("conditionsDF")
+
+            countMatrix <- AbunRNA::countMatrix
+            abunMatrix <- AbunRNA::abunMatrix
+            bigCond <- AbunRNA::bigCond
+            conditionsDF <- AbunRNA::conditionsDF
 
             datasetInput <- reactive({
                 switch(input$dataset,
