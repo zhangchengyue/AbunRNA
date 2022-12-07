@@ -83,15 +83,25 @@ ui <- fluidPage(
 
 
 server <- function(input, output) {
+
+
+    data(countMatrix)
+    data(abunMatrix)
+    data(bigCond)
+    data(conditionsDF)
+
+
+
     observeEvent(input$generate, {
 
         if (input$generate == "Demo") {
             shinyjs::hide(id = "ownMatrix")
             shinyjs::show(id = "demo")
-            countMatrix <- AbunRNA::countMatrix
-            abunMatrix <- AbunRNA::abunMatrix
-            bigCond <- AbunRNA::bigCond
-            conditionsDF <- AbunRNA::conditionsDF
+            # countMatrix <- AbunRNA::countMatrix
+            # abunMatrix <- AbunRNA::abunMatrix
+            # bigCond <- AbunRNA::bigCond
+            # conditionsDF <- AbunRNA::conditionsDF
+
 
             datasetInput <- reactive({
                 switch(input$dataset,
