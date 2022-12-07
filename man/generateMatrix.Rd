@@ -11,7 +11,7 @@ generateMatrix(
   type = "salmon",
   keytype = "TXNAME",
   species = NA,
-  release = NA,
+  release = "",
   outputCSV = FALSE,
   abunCSV = "abunCSV",
   heatmap = F,
@@ -26,7 +26,8 @@ output .sf files. The default value is NA.}
 transcriptome file. The default value is NA.}
 
 \item{sampleNames}{A character vector indicating sample names of the raw
-sequences. The default value is NA.}
+sequences. The default value is NA, and would automatically generate
+sample names if no specific names provided.}
 
 \item{type}{A string indicating the tool used for generating transcript
 expression abundance from raw sequence. The default tool is salmon.}
@@ -38,7 +39,7 @@ setting is TXNAME.}
 reference transcriptome. The default value is NA.}
 
 \item{release}{A string indicating the release version of the reference.
-Default is the current release. The default value is NA.}
+Default is the current release. The default value is empty string.}
 
 \item{outputCSV}{A boolean indicating whether to output the matrix as CSV.
 The default value is FALSE.}

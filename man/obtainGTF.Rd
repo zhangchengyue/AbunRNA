@@ -4,14 +4,14 @@
 \alias{obtainGTF}
 \title{Obtain GTF file of the genome annotation for a specific species from Ensembl}
 \usage{
-obtainGTF(species = NA, wantedVersion = NA, download = F)
+obtainGTF(species = NA, wantedVersion = "", download = F)
 }
 \arguments{
 \item{species}{A string indicating the specific name of the species to get
 reference transcriptome. The default value is NA.}
 
 \item{wantedVersion}{A double indicating the version of Ensembl archive.
-The default value is NA.}
+The default value is empty string.}
 
 \item{download}{A boolean indicating whether to download the file or not.
 The default value is FALSE.}

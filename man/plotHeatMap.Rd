@@ -9,8 +9,10 @@ plotHeatMap(matrix = NULL, head = T)
 \arguments{
 \item{matrix}{A count matrix. Default is NULL.}
 
-\item{head}{A boolean indicating whether to plot only the first 6 genes in
-the count matrix, or plot all.}
+\item{head}{A boolean indicating whether to plot only the first 20 genes in
+the count matrix. Default setting is TRUE. If set to FALSE, it might take
+a long time to generate the plot if there are a huge number of genes in the
+dataset.}
 }
 \value{
 A heatmap of the count matrix.

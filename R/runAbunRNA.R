@@ -2,7 +2,8 @@
 #'
 #' A function that launches the Shiny app for AbunRNA.
 #' The shiny app includes demo for displaying two count matrices, plot heatmap
-#'  and perform principle component analysis.
+#'  and perform principle component analysis. Users can also upload their own
+#'  quantification files to generate their own matrix.
 #'
 #'
 #' @return No return value but open up a Shiny page.

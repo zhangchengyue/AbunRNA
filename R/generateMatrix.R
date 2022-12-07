@@ -254,8 +254,8 @@ plotHeatMap <- function(matrix = NULL, head = T){
     }
 
     result <- pheatmap::pheatmap(mat = plot,
-                       number_color = "black",
-                       hclustfun = hclust)
+                                 number_color = "black",
+                                 hclustfun = hclust)
     return(result)
 }
 

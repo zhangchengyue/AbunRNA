@@ -4,14 +4,14 @@
 \alias{obtainCDNA}
 \title{Obtain complete cDNA fa.gz file for a specific species from Ensembl}
 \usage{
-obtainCDNA(species = NA, wantedVersion = NA, download = F)
+obtainCDNA(species = NA, wantedVersion = "", download = F)
 }
 \arguments{
 \item{species}{A string indicating the specific name of the species.
 The default value is NA.}
 
 \item{wantedVersion}{A double indicating the version of Ensembl archive.
-The default value is NA.}
+The default value is empty string.}
 
 \item{download}{A boolean indicating whether to download the file or not.
 The default value is FALSE.}
