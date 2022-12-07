@@ -1,3 +1,17 @@
+# This app is adapted from
+# Grolemund, G. (2015). Learn Shiny - Video Tutorials.
+# URL:https://shiny.rstudio.com/tutorial/
+
+# The tabset code is adapted from
+# RStudio Inc. (2013). Tabsets. Shiny Gallery.
+# URL:https://shiny.rstudio.com/gallery/tabsets.html
+
+# The code for hide/show boxes after clicking button is adapted from
+# SymbolixAU, June 27, 2017 (22:34p.m.), comment on Yordan Ivanov,
+# "Show/hide entire box element in R Shiny, Stack Overflow,
+# June 27, 2017 (21:15 p.m.)
+# URL: https://stackoverflow.com/questions/44790028/show-hide-entire-box-element-in-r-shiny
+
 library(shiny)
 library(shinydashboard)
 library(shinyjs)
@@ -97,12 +111,6 @@ server <- function(input, output) {
         if (input$generate == "Demo") {
             shinyjs::hide(id = "ownMatrix")
             shinyjs::show(id = "demo")
-
-            # countMatrix <- AbunRNA::countMatrix
-            # abunMatrix <- AbunRNA::abunMatrix
-            # bigCond <- AbunRNA::bigCond
-            # conditionsDF <- AbunRNA::conditionsDF
-
 
             datasetInput <- reactive({
                 switch(input$dataset,

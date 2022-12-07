@@ -15,7 +15,8 @@
 #' }
 #'
 #' @references
-#' Grolemund, G. (2015). Learn Shiny - Video Tutorials. \href{https://shiny.rstudio.com/tutorial/}{Link}
+#' Grolemund, G. (2015). Learn Shiny - Video Tutorials.
+#' \href{https://shiny.rstudio.com/tutorial/}{Link}
 #'
 #' @export
 #' @importFrom shiny runApp
